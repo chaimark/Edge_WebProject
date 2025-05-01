@@ -292,6 +292,7 @@ EndOver2:
     ArrVarSpace1.SizeType = sizeof(int);
     Cmd_Array_Var1.get(&Cmd_Array_Name, ArrVarSpace1, 5);
     printf("%s\n", ArrVarSpace1.Name._char);
+    
     return;
 }
 
