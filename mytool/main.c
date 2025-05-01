@@ -10,7 +10,6 @@
 #include "./C_MyLib/JsonDataAnalyzeLib.h"
 #include "./C_MyLib/JsonSetLib.h"
 #include "./C_MyLib/JsonCheckFun.h"
-#include "./C_MyLib/ChangeArray.h"
 
 HANDLE hSerial;
 DWORD baudRate = CBR_9600;
@@ -190,7 +189,7 @@ BOOL OpenSerialPort() {
 bool myGetS(strnew SpaceBuf) {
     if (_kbhit()) {  // 检测是否有键盘输入
         gets(SpaceBuf.Name._char);
-        // SpaceBuf.Name._char[strlen(SpaceBuf.Name._char)] = '\n';
+        SpaceBuf.Name._char[strlen(SpaceBuf.Name._char)] = '\n';
         return true;
     }
     return false;  // 未按下回车
@@ -212,10 +211,10 @@ void DisplayHelp(void) {
 
 #define initString_Txt "{\
     \"cmd_Name_Array\": [\
-        \"init\",\
-        \"read\",\
-        \"set\",\
-        \"reboot\"\
+        \"init\n\",\
+        \"read\n\",\
+        \"set\n\",\
+        \"reboot\n\"\
     ],\
     \"cmd_Var_Array\": [\
         \"{\\\"Write\\\":\\\"AT24DataJSON\\\",\\\"gw_id\\\":\\\"02345678903\\\",\\\"username\\\":\\\"admin\\\",\\\"password\\\":\\\"njhy1234\\\",\\\"heating_start\\\":\\\"20XX-09-01\\\",\\\"heating_end\\\":\\\"20XX-08-29\\\",\\\"NET_Local_IP\\\":\\\"192.168.2.218\\\",\\\"NET_Local_MASK\\\":\\\"255.255.255.0\\\",\\\"NET_Local_GATEWAY\\\":\\\"192.168.2.1\\\",\\\"remote_url\\\":\\\"59.110.170.225\\\",\\\"remote_port\\\":1883,\\\"main_interval\\\":10,\\\"copy_interval\\\":60,\\\"_copy_statistics\\\":1,\\\"not_intimer_interval\\\":1440,\\\"GW_model\\\":73,\\\"NetCheckENableFlag\\\":true,\\\"IsColorDislay\\\":false,\\\"DaysNumberOfCCLK\\\":7,\\\"main_meter_total\\\":0,\\\"copy_meter_total\\\":0,\\\"Time_Data\\\":\\\"2025-04-2613: 30: 18\\\"}\",\
@@ -273,8 +272,6 @@ void CMD_ChooseFun(strnew InputBuff) {
         memset(TempCmd_Var.Name._char, 0, TempCmd_Var.MaxLen);
         Cmd_Array_Name.get(&Cmd_Array_Name, TempCmd_Name, i);
         Cmd_Array_Var.get(&Cmd_Array_Var, TempCmd_Var, i);
-        printf("---->%s\n", TempCmd_Name.Name._char);
-        printf("----<%s\n", TempCmd_Var.Name._char);
         if (strcmp(InputBuff.Name._char, TempCmd_Name.Name._char) == 0) {
             memset(InputBuff.Name._char, 0, InputBuff.MaxLen);
             memcpy(InputBuff.Name._char, TempCmd_Var.Name._char, strlen(TempCmd_Var.Name._char));
