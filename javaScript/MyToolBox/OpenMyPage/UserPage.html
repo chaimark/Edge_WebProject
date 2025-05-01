@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>弹窗页面</title>
+    <style>
+        #popup {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 1px solid black;
+            padding: 20px;
+            box-sizing: border-box;
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            overflow: auto;
+        }
+
+        #popup textarea {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="popup">
+        <textarea id="original" placeholder="请选择原文"></textarea>
+        <textarea id="translation" placeholder="请填写翻译"></textarea>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+{
+	"name": "模拟抢购插件",
+	"version": "6.40.12",
+	"default_locale": "zh_cn",
+	"icons": {
+		"16": "_public/Images/logo16.png",
+		"48": "_public/Images/logo48.png",
+		"128": "_public/Images/logo128.png"
+	},
+	"browser_action": {
+		"default_icon": {
+			"16": "_public/Images/logo16.png",
+			"32": "_public/Images/logo32.png"
+		},
+		"default_popup": "_public/html/index.html"
+	},
+	"content_scripts": [
+		{
+			"js": [
+				"Main.js"
+			],
+			"matches": [
+				"http://*/*",
+				"https://*/*",
+				"ftp://*/*",
+				"file:///*"
+			],
+			"all_frames": true,
+			"run_at": "document_start"
+		}
+	],
+	"optional_permissions": [
+		"notifications",
+		"system.display"
+	],
+	"offline_enabled": false,
+	"manifest_version": 2,
+	"update_url": "www.Myupdate_url.com"
+}

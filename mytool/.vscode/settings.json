@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "typeindex": "c",
+        "typeinfo": "c",
+        "strlib.h": "c",
+        "jsoncheckfun.h": "c",
+        "ChangeArray.h": "c",
+        "jsondataanalyzelib.h": "c"
+    },
+    "files.autoGuessEncoding": true
+}

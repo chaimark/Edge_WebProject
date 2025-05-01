@@ -1,0 +1,74 @@
+{
+    "name": "MyTool",
+    "description": "__MSG_extension_desc__",
+    "version": "1.0",
+    "author": "chai mark",
+    "homepage_url": "https://github.com/chaimark/Edge_WebProject",
+    "default_locale": "en",
+    "manifest_version": 3,
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "tabs",
+        "cookies",
+        "webRequest",
+        "downloads",
+        "system.display",
+        "storage"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "icons": {
+        "16": "/images/logo16.png",
+        "48": "/images/logo48.png",
+        "128": "/images/logo128.png"
+    },
+    "action": {
+        "default_icon": {
+            "16": "/images/logo16.png",
+            "32": "/images/logo32.png"
+        },
+        "default_popup": "Sub_Pop.html"
+    },
+    "content_scripts": [
+        {
+            "js": [
+                "./RefreshCTWing/RefreshCTwingTask.js",
+                "./RefreshBaidu/RefreshBaiduTask.js",
+                "./UrlDoingLib/UrlDoingLib.js",
+                "./VideoTouchLib/videoTask.js",
+                "./douyinVideoTask/douyinTask.js",
+                "./autoTask.js"
+            ],
+            "matches": [
+                "<all_urls>"
+            ],
+            "all_frames": true,
+            "run_at": "document_end"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "./OpenMyPage/UserPage.html",
+                "./UserPage.html"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ],
+    "optional_permissions": [
+        "notifications"
+    ],
+    "externally_connectable": {
+        "matches": [
+            "http://*.internetdownloadmanager.com/*",
+            "http://*.tonec.com/*"
+        ]
+    },
+    "update_url": "https://github.com/chaimark/Edge_WebProject/crx",
+    "minimum_chrome_version": "47.0",
+    "offline_enabled": false
+}
