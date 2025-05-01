@@ -60,6 +60,10 @@ extern char swapLowHight_Of_Char(char InputCh);
 extern bool MoveDataOnBuff(strnew IntptBuff, int ShiftLen, bool IsLeft);
 extern void StringSlice(strnew OutStr, strnew Mather, int start, int end);
 
+#define strnew_malloc(name,Len) newstrobj(name,1)\
+name.Name._char = (char *)malloc(Len);\
+name.MaxLen = Len
+
 #ifdef _Alignas 
 #define GET_TYPE(var) (_Generic((var), \
     int: "int", \

@@ -139,12 +139,28 @@ void Arr_get(struct _JsonArray This, strnew OutStr, int ItemNum) {
     char Temp = *(EndItem - 1);
     *(EndItem - 1) = '\0';
     memset(OutStr.Name._char, 0, OutStr.MaxLen);
-    if (OutStr.SizeType == 1) { // 如果是字符串类型
-        copyString(OutStr.Name._char, &HeadItem[1], OutStr.MaxLen, (strlen(&HeadItem[1]) - 1));
-    } else {
-        copyString(OutStr.Name._char, HeadItem, OutStr.MaxLen, strlen(HeadItem));
-    }
+    copyString(OutStr.Name._char, HeadItem, OutStr.MaxLen, strlen(HeadItem));
     *(EndItem - 1) = Temp;
+    int NowLineMaxLen = strlen(HeadItem);
+    // 找第一个非空字符
+    for (int i = 0; i < NowLineMaxLen; i++) {
+        if ((OutStr.Name._char[i] != '[') && (OutStr.Name._char[i] != ' ') && (OutStr.Name._char[i] != '\r') && (OutStr.Name._char[i] != '\n') && (OutStr.Name._char[i] != '\"')) {
+            HeadItem = &OutStr.Name._char[i];
+            break;
+        }
+    }
+    // 找最后一个非空指挥
+    for (int i = (NowLineMaxLen - 1); i > 0; i--) {
+        if ((OutStr.Name._char[i] != ']') && (OutStr.Name._char[i] != ' ') && (OutStr.Name._char[i] != '\r') && (OutStr.Name._char[i] != '\n') && (OutStr.Name._char[i] != '\"')) {
+            EndItem = &OutStr.Name._char[i];
+            break;
+        }
+    }
+    *(EndItem + 1) = '\0';
+    for (ItemNum = 0; ItemNum < strlen(HeadItem); ItemNum++) {
+        OutStr.Name._char[ItemNum] = *(HeadItem + ItemNum);
+    }
+    OutStr.Name._char[ItemNum] = '\0';
 }
 
 JsonArray newJsonArrayByString(strnew DataInit) {
