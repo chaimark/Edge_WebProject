@@ -286,13 +286,6 @@ EndOver1:
     free(ArrVarSpace.Name._char);
 EndOver2:
     free(JsonConfig.Name._char);
-
-    strnew_malloc(ArrVarSpace1, fileSize + 20);
-    JsonArray Cmd_Array_Var1 = JsonConfigObj.getArray(&JsonConfigObj, "cmd_Var_Array1", ArrVarSpace);
-    ArrVarSpace1.SizeType = sizeof(int);
-    Cmd_Array_Var1.get(&Cmd_Array_Name, ArrVarSpace1, 5);
-    printf("%s\n", ArrVarSpace1.Name._char);
-    
     return;
 }
 
