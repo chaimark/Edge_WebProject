@@ -144,14 +144,14 @@ void Arr_get(struct _JsonArray This, strnew OutStr, int ItemNum) {
     int NowLineMaxLen = strlen(HeadItem);
     // 找第一个非空字符
     for (int i = 0; i < NowLineMaxLen; i++) {
-        if ((OutStr.Name._char[i] != '[') && (OutStr.Name._char[i] != ' ') && (OutStr.Name._char[i] != '\r') && (OutStr.Name._char[i] != '\n') && (OutStr.Name._char[i] != '\"')) {
+        if ((OutStr.Name._char[i] != '\0') && (OutStr.Name._char[i] != '[') && (OutStr.Name._char[i] != ' ') && (OutStr.Name._char[i] != '\r') && (OutStr.Name._char[i] != '\n') && (OutStr.Name._char[i] != '\"')) {
             HeadItem = &OutStr.Name._char[i];
             break;
         }
     }
     // 找最后一个非空指挥
     for (int i = (NowLineMaxLen - 1); i > 0; i--) {
-        if ((OutStr.Name._char[i] != ']') && (OutStr.Name._char[i] != ' ') && (OutStr.Name._char[i] != '\r') && (OutStr.Name._char[i] != '\n') && (OutStr.Name._char[i] != '\"')) {
+        if ((OutStr.Name._char[i] != '\0') && (OutStr.Name._char[i] != ']') && (OutStr.Name._char[i] != ' ') && (OutStr.Name._char[i] != '\r') && (OutStr.Name._char[i] != '\n') && (OutStr.Name._char[i] != '\"')) {
             EndItem = &OutStr.Name._char[i];
             break;
         }
