@@ -189,32 +189,22 @@ BOOL OpenSerialPort() {
 bool myGetS(strnew SpaceBuf) {
     if (_kbhit()) {  // 检测是否有键盘输入
         gets(SpaceBuf.Name._char);
-        SpaceBuf.Name._char[strlen(SpaceBuf.Name._char)] = '\n';
         return true;
     }
     return false;  // 未按下回车
 }
 
-void DisplayHelp(void) {
-    // printf("\n******************************\n\n");
-    // printf("\n{\"Read\":\"AT24DataJSON\"}");
-    // printf("\n{\"Write\":\"AT24DataJSON\", \"Name\":\"var\"}");
-    // printf("\n{\"SetCmd\":\"ReadBoard\",\"PathSwitch\":\"MUBS/RS4851/RS4852\",\"MUBS_B\":\"Read\",\"RS4851_B\":\"Read\",\"RS4852_B\":\"Read\"}");
-    // printf("\n\n");
-
-    // printf(">> init\n");
-    // printf(">> read\n");
-    // printf(">> set\n");
-    // printf(">> reboot\n");
-    // printf(">> uptime\n");
+void DisplayHelp(strnew CmdName, strnew CmdVar) {
+    printf("CmdName :%s\n", CmdName.Name._char);
+    printf("CmdVar  :%s\n", CmdVar.Name._char);
 }
 
 #define initString_Txt "{\
     \"cmd_Name_Array\": [\
-        \"init\n\",\
-        \"read\n\",\
-        \"set\n\",\
-        \"reboot\n\"\
+        \"init\",\
+        \"read\",\
+        \"set\",\
+        \"reboot\"\
     ],\
     \"cmd_Var_Array\": [\
         \"{\\\"Write\\\":\\\"AT24DataJSON\\\",\\\"gw_id\\\":\\\"02345678903\\\",\\\"username\\\":\\\"admin\\\",\\\"password\\\":\\\"njhy1234\\\",\\\"heating_start\\\":\\\"20XX-09-01\\\",\\\"heating_end\\\":\\\"20XX-08-29\\\",\\\"NET_Local_IP\\\":\\\"192.168.2.218\\\",\\\"NET_Local_MASK\\\":\\\"255.255.255.0\\\",\\\"NET_Local_GATEWAY\\\":\\\"192.168.2.1\\\",\\\"remote_url\\\":\\\"59.110.170.225\\\",\\\"remote_port\\\":1883,\\\"main_interval\\\":10,\\\"copy_interval\\\":60,\\\"_copy_statistics\\\":1,\\\"not_intimer_interval\\\":1440,\\\"GW_model\\\":73,\\\"NetCheckENableFlag\\\":true,\\\"IsColorDislay\\\":false,\\\"DaysNumberOfCCLK\\\":7,\\\"main_meter_total\\\":0,\\\"copy_meter_total\\\":0,\\\"Time_Data\\\":\\\"2025-04-2613: 30: 18\\\"}\",\
@@ -225,7 +215,7 @@ void DisplayHelp(void) {
 }"
 
 const char * initStr = initString_Txt;
-void CMD_ChooseFun(strnew InputBuff) {
+void CMD_ChooseFun(strnew InputBuff, bool UserFlag) {
     FILE * configFile = fopen("config.json", "r");
     if (configFile == NULL) {
         printf("Error: 无法打开配置文件 config.json\n");
@@ -272,10 +262,14 @@ void CMD_ChooseFun(strnew InputBuff) {
         memset(TempCmd_Var.Name._char, 0, TempCmd_Var.MaxLen);
         Cmd_Array_Name.get(&Cmd_Array_Name, TempCmd_Name, i);
         Cmd_Array_Var.get(&Cmd_Array_Var, TempCmd_Var, i);
-        if (strcmp(InputBuff.Name._char, TempCmd_Name.Name._char) == 0) {
-            memset(InputBuff.Name._char, 0, InputBuff.MaxLen);
-            memcpy(InputBuff.Name._char, TempCmd_Var.Name._char, strlen(TempCmd_Var.Name._char));
-            goto EndOver1;
+        if (UserFlag == true) {
+            DisplayHelp(TempCmd_Name, TempCmd_Var);
+        } else {
+            if (strcmp(InputBuff.Name._char, TempCmd_Name.Name._char) == 0) {
+                memset(InputBuff.Name._char, 0, InputBuff.MaxLen);
+                memcpy(InputBuff.Name._char, TempCmd_Var.Name._char, strlen(TempCmd_Var.Name._char));
+                goto EndOver1;
+            }
         }
     }
 EndOver1:
@@ -304,22 +298,24 @@ void InteractiveMode() {
         Sleep(0);
         isScanOver = myGetS(InputBuff);
         DWORD bytesWritten;
-        if (isScanOver && (strlen(StrInputBuff) != 0)) {
+        if (isScanOver) {
             if (strcmp(StrInputBuff, "clear") == 0) {
                 system("cls");
                 isScanOver = false;
                 continue;
             } else if (strcmp(StrInputBuff, "help") == 0) {
                 system("cls");
-                DisplayHelp();
+                CMD_ChooseFun(InputBuff, true);
+                memset(StrInputBuff, 0, 256);
                 isScanOver = false;
                 continue;
             } else {
-                CMD_ChooseFun(InputBuff);
+                CMD_ChooseFun(InputBuff, false);
             }
             if (isOpenCS_JSon == 1) {
                 // AddCsToJsonAndPushJsonStr(newJsonObjectByString(NEW_NAME(StrInputBuff)));
             }
+            catString(StrInputBuff, "\n", InputBuff.MaxLen, 1);
             if (!WriteFile(hSerial, StrInputBuff, strlen(StrInputBuff), &bytesWritten, NULL)) {
                 DWORD error = GetLastError();
                 printf("Error: 发送失败, 错误代码: %lu\n", error);
