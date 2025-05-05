@@ -195,8 +195,7 @@ bool myGetS(strnew SpaceBuf) {
 }
 
 void DisplayHelp(strnew CmdName, strnew CmdVar) {
-    printf("CmdName :%s\n", CmdName.Name._char);
-    printf("CmdVar  :%s\n", CmdVar.Name._char);
+    printf("\n>> %s : \n   %s\n", CmdName.Name._char,CmdVar.Name._char);
 }
 
 #define initString_Txt "{\
