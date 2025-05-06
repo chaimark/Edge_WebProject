@@ -199,18 +199,18 @@ void DisplayHelp(strnew CmdName, strnew CmdVar) {
 }
 
 #define initString_Txt "{\
-\"cmd_Name_Array\": [\
-    \"init\",\
-    \"read\",\
-    \"set\",\
-    \"reboot\"\
-],\
-\"cmd_Var_Array\": [\
-    \"{'Write':'AT24DataJSON','gw_id':'02345678903','username':'admin','password':'njhy1234','heating_start':'20XX-09-01','heating_end':'20XX-08-29','NET_Local_IP':'192.168.2.218','NET_Local_MASK':'255.255.255.0','NET_Local_GATEWAY':'192.168.2.1','remote_url':'59.110.170.225','remote_port':1883,'main_interval':10,'copy_interval':60,'_copy_statistics':1,'not_intimer_interval':1440,'GW_model':73,'NetCheckENableFlag':true,'IsColorDislay':false,'DaysNumberOfCCLK':7,'main_meter_total':0,'copy_meter_total':0,'Time_Data':'2025-04-2613: 30: 18'}\",\
-    \"{'Read':'AT24DataJSON'}\",\
-    \"{'SetCmd':'ReadBoard','MUBS_B':'Read','RS4851_B':'Read','RS4852_B':'Read'}\",\
-    \"{'SetCmd':'ReadBoard','Reboot':true}\"\
-]\
+    \"cmd_Name_Array\": [\
+        \"init\",\
+        \"read\",\
+        \"set\",\
+        \"reboot\"\
+    ],\
+    \"cmd_Var_Array\": [\
+        \"{'Write':'AT24DataJSON','gw_id':'02345678903','username':'admin','password':'njhy1234','heating_start':'20XX-09-01','heating_end':'20XX-08-29','NET_Local_IP':'192.168.2.218','NET_Local_MASK':'255.255.255.0','NET_Local_GATEWAY':'192.168.2.1','remote_url':'59.110.170.225','remote_port':1883,'main_interval':10,'copy_interval':60,'_copy_statistics':1,'not_intimer_interval':1440,'GW_model':73,'NetCheckENableFlag':true,'IsColorDislay':false,'DaysNumberOfCCLK':7,'main_meter_total':0,'copy_meter_total':0,'Time_Data':'2025-04-2613: 30: 18'}\",\
+        \"{'Read':'AT24DataJSON'}\",\
+        \"{'SetCmd':'ReadBoard','MUBS_B':'Read','RS4851_B':'Read','RS4852_B':'Read'}\",\
+        \"{'SetCmd':'ReadBoard','Reboot':true}\"\
+    ]\
 }"
 
 const char * initStr = initString_Txt;
@@ -226,6 +226,7 @@ void CMD_ChooseFun(strnew InputBuff, bool UserFlag) {
             printf("Error: 无法创建配置文件 config.json\n");
         }
         system("timeout 2");
+        printf("config.json success\n");
         return;
     }
     fseek(configFile, 0, SEEK_END);
