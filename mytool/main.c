@@ -280,6 +280,9 @@ EndOver2:
     do {
         P_Node = NULL;
         P_Node = strchr(InputBuff.Name._char, '\'');
+        if (P_Node == NULL) {
+            break;
+        }
         (*P_Node) = '\"';
     } while (P_Node != NULL);
     return;
