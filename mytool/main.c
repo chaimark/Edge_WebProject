@@ -19,8 +19,8 @@ BYTE parity = NOPARITY;
 int isOpenCS_JSon = 0;
 char portName[10] = "COM3";
 void clsInputSpace(void) {
-    // char ch = 0;
-    // while ((ch = getchar()) != '\n' && ch != EOF);
+    char ch = 0;
+    while ((ch = getchar()) != '\n' && ch != EOF);
 }
 // 线程函数：接收串口数据
 DWORD WINAPI ReadSerialThread(LPVOID lpParam) {
@@ -195,22 +195,22 @@ bool myGetS(strnew SpaceBuf) {
 }
 
 void DisplayHelp(strnew CmdName, strnew CmdVar) {
-    printf("\n>> %s : \n   %s\n", CmdName.Name._char,CmdVar.Name._char);
+    printf("\n>> %s : \n   %s\n", CmdName.Name._char, CmdVar.Name._char);
 }
 
 #define initString_Txt "{\
-    \"cmd_Name_Array\": [\
-        \"init\",\
-        \"read\",\
-        \"set\",\
-        \"reboot\"\
-    ],\
-    \"cmd_Var_Array\": [\
-        \"{\\\"Write\\\":\\\"AT24DataJSON\\\",\\\"gw_id\\\":\\\"02345678903\\\",\\\"username\\\":\\\"admin\\\",\\\"password\\\":\\\"njhy1234\\\",\\\"heating_start\\\":\\\"20XX-09-01\\\",\\\"heating_end\\\":\\\"20XX-08-29\\\",\\\"NET_Local_IP\\\":\\\"192.168.2.218\\\",\\\"NET_Local_MASK\\\":\\\"255.255.255.0\\\",\\\"NET_Local_GATEWAY\\\":\\\"192.168.2.1\\\",\\\"remote_url\\\":\\\"59.110.170.225\\\",\\\"remote_port\\\":1883,\\\"main_interval\\\":10,\\\"copy_interval\\\":60,\\\"_copy_statistics\\\":1,\\\"not_intimer_interval\\\":1440,\\\"GW_model\\\":73,\\\"NetCheckENableFlag\\\":true,\\\"IsColorDislay\\\":false,\\\"DaysNumberOfCCLK\\\":7,\\\"main_meter_total\\\":0,\\\"copy_meter_total\\\":0,\\\"Time_Data\\\":\\\"2025-04-2613: 30: 18\\\"}\",\
-        \"{\\\"Read\\\":\\\"AT24DataJSON\\\"}\",\
-        \"{\\\"SetCmd\\\":\\\"ReadBoard\\\",\\\"MUBS_B\\\":\\\"Read\\\",\\\"RS4851_B\\\":\\\"Read\\\",\\\"RS4852_B\\\":\\\"Read\\\"}\",\
-        \"{\\\"SetCmd\\\":\\\"ReadBoard\\\",\\\"Reboot\\\":true}\"\
-    ]\
+\"cmd_Name_Array\": [\
+    \"init\",\
+    \"read\",\
+    \"set\",\
+    \"reboot\"\
+],\
+\"cmd_Var_Array\": [\
+    \"{'Write':'AT24DataJSON','gw_id':'02345678903','username':'admin','password':'njhy1234','heating_start':'20XX-09-01','heating_end':'20XX-08-29','NET_Local_IP':'192.168.2.218','NET_Local_MASK':'255.255.255.0','NET_Local_GATEWAY':'192.168.2.1','remote_url':'59.110.170.225','remote_port':1883,'main_interval':10,'copy_interval':60,'_copy_statistics':1,'not_intimer_interval':1440,'GW_model':73,'NetCheckENableFlag':true,'IsColorDislay':false,'DaysNumberOfCCLK':7,'main_meter_total':0,'copy_meter_total':0,'Time_Data':'2025-04-2613: 30: 18'}\",\
+    \"{'Read':'AT24DataJSON'}\",\
+    \"{'SetCmd':'ReadBoard','MUBS_B':'Read','RS4851_B':'Read','RS4852_B':'Read'}\",\
+    \"{'SetCmd':'ReadBoard','Reboot':true}\"\
+]\
 }"
 
 const char * initStr = initString_Txt;
@@ -276,6 +276,12 @@ EndOver1:
     free(ArrVarSpace.Name._char);
 EndOver2:
     free(JsonConfig.Name._char);
+    char * P_Node = NULL;
+    do {
+        P_Node = NULL;
+        P_Node = strchr(InputBuff.Name._char, '\'');
+        (*P_Node) = '\"';
+    } while (P_Node != NULL);
     return;
 }
 
