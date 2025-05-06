@@ -98,9 +98,11 @@ void ConfigureSerialPort() {
         case 3: parity = EVENPARITY; break;
         default: parity = NOPARITY; break;
     }
-
-    // printf("\n是否启用 JsonCs 校验\n否:0 or 是:1 >> : ");
-    // scanf("%d", &isOpenCS_JSon);
+    
+#ifdef HY_JSON_CMD
+    printf("\n是否启用 JsonCs 校验\n否:0 or 是:1 >> : ");
+    scanf("%d", &isOpenCS_JSon);
+#endif
 }
 
 // 打开串口
@@ -150,7 +152,6 @@ BOOL OpenSerialPort() {
     timeouts.WriteTotalTimeoutMultiplier = 10;
     timeouts.WriteTotalTimeoutConstant = 10;
 
-
     if (!SetCommTimeouts(hSerial, &timeouts)) {
         printf("Error: 无法设置串口超时\n");
         CloseHandle(hSerial);
@@ -181,7 +182,6 @@ BOOL OpenSerialPort() {
     }
 
     printf("\n串口 %s 已打开\n", portName);
-
     return TRUE;
 }
 
@@ -277,15 +277,17 @@ EndOver1:
     free(ArrVarSpace.Name._char);
 EndOver2:
     free(JsonConfig.Name._char);
-    char * P_Node = NULL;
-    do {
-        P_Node = NULL;
-        P_Node = strchr(InputBuff.Name._char, '\'');
-        if (P_Node == NULL) {
-            break;
-        }
-        (*P_Node) = '\"';
-    } while (P_Node != NULL);
+    if (isOpenCS_JSon == 1) {
+        char * P_Node = NULL;
+        do {
+            P_Node = NULL;
+            P_Node = strchr(InputBuff.Name._char, '\'');
+            if (P_Node == NULL) {
+                break;
+            }
+            (*P_Node) = '\"';
+        } while (P_Node != NULL);
+    }
     return;
 }
 
@@ -322,7 +324,7 @@ void InteractiveMode() {
                 CMD_ChooseFun(InputBuff, false);
             }
             if (isOpenCS_JSon == 1) {
-                // AddCsToJsonAndPushJsonStr(newJsonObjectByString(NEW_NAME(StrInputBuff)));
+                AddCsToJsonAndPushJsonStr(newJsonObjectByString(NEW_NAME(StrInputBuff)));
             }
             catString(StrInputBuff, "\n", InputBuff.MaxLen, 1);
             if (!WriteFile(hSerial, StrInputBuff, strlen(StrInputBuff), &bytesWritten, NULL)) {
