@@ -98,7 +98,7 @@ void ConfigureSerialPort() {
         case 3: parity = EVENPARITY; break;
         default: parity = NOPARITY; break;
     }
-    
+
 #ifdef HY_JSON_CMD
     printf("\n是否启用 JsonCs 校验\n否:0 or 是:1 >> : ");
     scanf("%d", &isOpenCS_JSon);
@@ -316,6 +316,10 @@ void InteractiveMode() {
                 continue;
             } else if (strcmp(StrInputBuff, "help") == 0) {
                 system("cls");
+#ifdef HY_JSON_CMD
+                printf("\n 基础指令格式 : {'Write':'AT24DataJSON','name':'var'}");
+#endif
+                printf("\n 快捷指令: ===============>\n");
                 CMD_ChooseFun(InputBuff, true);
                 memset(StrInputBuff, 0, 256);
                 isScanOver = false;
