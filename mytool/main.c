@@ -206,7 +206,7 @@ void DisplayHelp(strnew CmdName, strnew CmdVar) {
         \"reboot\"\
     ],\
     \"cmd_Var_Array\": [\
-        \"{'Write':'AT24DataJSON','gw_id':'02345678903','username':'admin','password':'njhy1234','heating_start':'20XX-09-01','heating_end':'20XX-08-29','NET_Local_IP':'192.168.2.218','NET_Local_MASK':'255.255.255.0','NET_Local_GATEWAY':'192.168.2.1','remote_url':'59.110.170.225','remote_port':1883,'main_interval':10,'copy_interval':60,'_copy_statistics':1,'not_intimer_interval':1440,'GW_model':73,'NetCheckENableFlag':true,'IsColorDislay':false,'DaysNumberOfCCLK':7,'main_meter_total':0,'copy_meter_total':0,'Time_Data':'2025-04-2613: 30: 18'}\",\
+        \"{'Write':'AT24DataJSON','gw_id':'02345678903','username':'admin','password':'njhy1234','heating_start':'20XX-09-01','heating_end':'20XX-08-29','NET_Local_IP':'192.168.2.218','NET_Local_MASK':'255.255.255.0','NET_Local_GATEWAY':'192.168.2.1','remote_url':'59.110.170.225','remote_port':1883,'main_interval':10,'copy_interval':60,'_copy_statistics':1,'not_intimer_interval':1440,'GW_model':73,'NetCheckENableFlag':true,'IsColorDislay':false,'DaysNumberOfCCLK':7,'main_meter_total':0,'copy_meter_total':0,'Time_Data':'2025-04-26 13:30:18'}\",\
         \"{'Read':'AT24DataJSON'}\",\
         \"{'SetCmd':'ReadBoard','MUBS_B':'Read','RS4851_B':'Read','RS4852_B':'Read'}\",\
         \"{'SetCmd':'ReadBoard','Reboot':true}\"\
@@ -324,7 +324,24 @@ void InteractiveMode() {
                 memset(StrInputBuff, 0, 256);
                 isScanOver = false;
                 continue;
-            } else {
+            }
+#ifdef HY_JSON_CMD
+            else if (strcmp(StrInputBuff, "time_init") == 0) {
+                memset(InputBuff.Name._char, 0, InputBuff.MaxLen);
+                newString(TimeStr, 25);
+                //2025-04-26 13:30:18
+                SYSTEMTIME st;
+                GetLocalTime(&st);
+                snprintf(TimeStr.Name._char, TimeStr.MaxLen, "%04d-%02d-%02d %02d:%02d:%02d",
+                    st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond);
+                // 获取当前电脑时间
+                AddJsonItemData(InputBuff, "{");
+                AddJsonItemData(InputBuff, "Write:\"%s\",", "AT24DataJSON");
+                AddJsonItemData(InputBuff, "Time_Data:\"%s\"", TimeStr.Name._char);
+                AddJsonItemData(InputBuff, "}");
+            }
+#endif
+            else {
                 CMD_ChooseFun(InputBuff, false);
             }
             if (isOpenCS_JSon == 1) {
