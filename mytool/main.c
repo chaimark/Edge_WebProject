@@ -310,7 +310,10 @@ void InteractiveMode() {
         isScanOver = myGetS(InputBuff);
         DWORD bytesWritten;
         if (isScanOver) {
-            if (strcmp(StrInputBuff, "clear") == 0) {
+            if (strcmp(StrInputBuff, "recom") == 0) {
+                // 退出重连 COM 口
+                OpenSerialPort();
+            } else if (strcmp(StrInputBuff, "clear") == 0) {
                 system("cls");
                 isScanOver = false;
                 continue;
@@ -355,7 +358,7 @@ void InteractiveMode() {
                 AddJsonItemData(InputBuff, "Write:\"%s\",", "AT24DataJSON");
                 AddJsonItemData(InputBuff, "gw_id:\"%s\"", gwidstr.Name._char);
                 AddJsonItemData(InputBuff, "}");
-        }
+            }
 #endif 
             else {
                 CMD_ChooseFun(InputBuff, false);
@@ -371,10 +374,10 @@ void InteractiveMode() {
                 memset(StrInputBuff, 0, 256);
             }
             isScanOver = false;
+        }
     }
-}
 
-// 关闭线程
+    // 关闭线程
     TerminateThread(hThread, 0);
     CloseHandle(hThread);
 }
