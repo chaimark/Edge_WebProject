@@ -338,8 +338,8 @@ bool isSpecialCmd(char * CmdStr) {
     return false;
 }
 void SpecialCmdDone(strnew InputBuff) {
-    char * StrInputBuff = InputBuff.Name._char;
 #ifdef HY_JSON_CMD
+    char * StrInputBuff = InputBuff.Name._char;
     if (strcmp(StrInputBuff, "time_init") == 0) {
         memset(InputBuff.Name._char, 0, InputBuff.MaxLen);
         newString(TimeStr, 25);
