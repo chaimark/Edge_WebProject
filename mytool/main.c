@@ -318,10 +318,10 @@ void InteractiveMode() {
                 system("cls");
 #ifdef HY_JSON_CMD
                 printf("\n 基础指令格式 : {'Write':'AT24DataJSON','name':'var'}");
-                printf("\n 特殊指令 \n time_init : {'Write':'AT24DataJSON','Time_Data':'NowTime'}\n");
-                printf("\n idset xxxxxx : {'Write':'AT24DataJSON','gw_id':'xxxxxx'}\n");
+                printf("\n\n 特殊指令: ===============>\n time_init : {'Write':'AT24DataJSON','Time_Data':'NowTime'}");
+                printf("\n idset:xxxxxx : {'Write':'AT24DataJSON','gw_id':'xxxxxx'}");
 #endif
-                printf("\n 快捷指令: ===============>\n");
+                printf("\n\n 快捷指令: ===============>\n");
                 CMD_ChooseFun(InputBuff, true);
                 memset(StrInputBuff, 0, 256);
                 isScanOver = false;
@@ -345,7 +345,7 @@ void InteractiveMode() {
                 char * p = strchr(StrInputBuff, ':');  // 查找冒号的位置
                 if (p != NULL) {
                     p++;  // 移动到冒号后面
-                    strncpy(gwidstr.Name._char, p, sizeof(gwidstr.Name._char) - 1);  // 复制字符串
+                    copyString(gwidstr.Name._char, p, gwidstr.MaxLen, strlen(p));  // 复制字符串
                 } else {
                     printf("Error: 无效的输入格式\n");
                     continue;
@@ -355,7 +355,7 @@ void InteractiveMode() {
                 AddJsonItemData(InputBuff, "Write:\"%s\",", "AT24DataJSON");
                 AddJsonItemData(InputBuff, "gw_id:\"%s\"", gwidstr.Name._char);
                 AddJsonItemData(InputBuff, "}");
-            }
+        }
 #endif 
             else {
                 CMD_ChooseFun(InputBuff, false);
@@ -371,10 +371,10 @@ void InteractiveMode() {
                 memset(StrInputBuff, 0, 256);
             }
             isScanOver = false;
-        }
     }
+}
 
-    // 关闭线程
+// 关闭线程
     TerminateThread(hThread, 0);
     CloseHandle(hThread);
 }
