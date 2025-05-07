@@ -37,6 +37,7 @@ DWORD WINAPI ReadSerialThread(LPVOID lpParam) {
             }
         } else {
             printf("Error: 读取串口失败\n");
+            printf("输入 \"recom\" 重连 COM 口\n");
             break;
         }
     }
@@ -103,6 +104,42 @@ void ConfigureSerialPort() {
     printf("\n是否启用 JsonCs 校验\n否:0 or 是:1 >> : ");
     scanf("%d", &isOpenCS_JSon);
 #endif
+}
+
+// 显示所有可用串口
+void ListAvailablePorts() {
+    HDEVINFO hDevInfo;
+    SP_DEVINFO_DATA DeviceInfoData;
+    DWORD i;
+
+    // 获取设备信息集合
+    hDevInfo = SetupDiGetClassDevs(&GUID_DEVCLASS_PORTS, 0, 0, DIGCF_PRESENT);
+    if (hDevInfo == INVALID_HANDLE_VALUE) {
+        printf("Error: 无法获取设备信息集合\n");
+        return;
+    }
+
+    // 枚举设备
+    DeviceInfoData.cbSize = sizeof(SP_DEVINFO_DATA);
+    for (i = 0; SetupDiEnumDeviceInfo(hDevInfo, i, &DeviceInfoData); i++) {
+        TCHAR deviceName[256];
+        TCHAR devicePort[256];
+
+        // 获取设备名称
+        if (SetupDiGetDeviceRegistryProperty(
+            hDevInfo, &DeviceInfoData, SPDRP_FRIENDLYNAME,
+            NULL, (PBYTE)deviceName, sizeof(deviceName), NULL)) {
+            // 获取端口号
+            if (SetupDiGetDeviceRegistryProperty(
+                hDevInfo, &DeviceInfoData, SPDRP_PHYSICAL_DEVICE_OBJECT_NAME,
+                NULL, (PBYTE)devicePort, sizeof(devicePort), NULL)) {
+                _tprintf(_T("设备: %s\n"), deviceName);
+            }
+        }
+    }
+
+    // 清理
+    SetupDiDestroyDeviceInfoList(hDevInfo);
 }
 
 // 打开串口
@@ -310,9 +347,25 @@ void InteractiveMode() {
         isScanOver = myGetS(InputBuff);
         DWORD bytesWritten;
         if (isScanOver) {
-            if (strcmp(StrInputBuff, "recom") == 0) {
-                // 退出重连 COM 口
-                OpenSerialPort();
+            if (strcmp(StrInputBuff, "recom") == 0) {  // 重连 COM 口
+                CloseHandle(hSerial);   // 关闭串口
+                for (int i = 0; i < 3 && !OpenSerialPort(); i++) {  // 尝试重新打开串口
+                    printf("重连失败,3 秒后重试...\n");
+                    Sleep(3000);
+                }
+                if (hSerial != INVALID_HANDLE_VALUE) {
+                    PurgeComm(hSerial, PURGE_RXCLEAR | PURGE_TXCLEAR);  // 清空缓冲区
+                    if (hThread != NULL) {
+                        TerminateThread(hThread, 0);
+                        CloseHandle(hThread);
+                    }
+                    hThread = CreateThread(NULL, 0, ReadSerialThread, NULL, 0, NULL);
+                    if (hThread == NULL) {
+                        printf("Error: 无法重新创建接收线程\n");
+                    } else {
+                        printf("串口重连成功！\n");
+                    }
+                }
             } else if (strcmp(StrInputBuff, "clear") == 0) {
                 system("cls");
                 isScanOver = false;
@@ -370,7 +423,6 @@ void InteractiveMode() {
             if (!WriteFile(hSerial, StrInputBuff, strlen(StrInputBuff), &bytesWritten, NULL)) {
                 DWORD error = GetLastError();
                 printf("Error: 发送失败, 错误代码: %lu\n", error);
-                printf("输入 \"recom\" 重连 COM 口\n");
             } else {
                 memset(StrInputBuff, 0, 256);
             }
@@ -381,42 +433,6 @@ void InteractiveMode() {
     // 关闭线程
     TerminateThread(hThread, 0);
     CloseHandle(hThread);
-}
-
-// 显示所有可用串口
-void ListAvailablePorts() {
-    HDEVINFO hDevInfo;
-    SP_DEVINFO_DATA DeviceInfoData;
-    DWORD i;
-
-    // 获取设备信息集合
-    hDevInfo = SetupDiGetClassDevs(&GUID_DEVCLASS_PORTS, 0, 0, DIGCF_PRESENT);
-    if (hDevInfo == INVALID_HANDLE_VALUE) {
-        printf("Error: 无法获取设备信息集合\n");
-        return;
-    }
-
-    // 枚举设备
-    DeviceInfoData.cbSize = sizeof(SP_DEVINFO_DATA);
-    for (i = 0; SetupDiEnumDeviceInfo(hDevInfo, i, &DeviceInfoData); i++) {
-        TCHAR deviceName[256];
-        TCHAR devicePort[256];
-
-        // 获取设备名称
-        if (SetupDiGetDeviceRegistryProperty(
-            hDevInfo, &DeviceInfoData, SPDRP_FRIENDLYNAME,
-            NULL, (PBYTE)deviceName, sizeof(deviceName), NULL)) {
-            // 获取端口号
-            if (SetupDiGetDeviceRegistryProperty(
-                hDevInfo, &DeviceInfoData, SPDRP_PHYSICAL_DEVICE_OBJECT_NAME,
-                NULL, (PBYTE)devicePort, sizeof(devicePort), NULL)) {
-                _tprintf(_T("设备: %s\n"), deviceName);
-            }
-        }
-    }
-
-    // 清理
-    SetupDiDestroyDeviceInfoList(hDevInfo);
 }
 
 int main() {
