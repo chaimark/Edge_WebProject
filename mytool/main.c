@@ -328,6 +328,49 @@ EndOver2:
     return;
 }
 
+// 特殊指令，需要程序组织
+bool isSpecialCmd(char * CmdStr) {
+    if (strcmp(CmdStr, "time_init") == 0) {
+        return true;
+    } else if (strstr(CmdStr, "idset:") != NULL) {
+        return true;
+    }
+    return false;
+}
+void SpecialCmdDone(strnew InputBuff) {
+    char * StrInputBuff = InputBuff.Name._char;
+#ifdef HY_JSON_CMD
+    if (strcmp(StrInputBuff, "time_init") == 0) {
+        memset(InputBuff.Name._char, 0, InputBuff.MaxLen);
+        newString(TimeStr, 25);
+        //2025-04-26 13:30:18
+        SYSTEMTIME st;
+        GetLocalTime(&st);  // 获取当前电脑时间
+        snprintf(TimeStr.Name._char, TimeStr.MaxLen, "%04d-%02d-%02d %02d:%02d:%02d",
+            st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond);
+        AddJsonItemData(InputBuff, "{");
+        AddJsonItemData(InputBuff, "Write:\"%s\",", "AT24DataJSON");
+        AddJsonItemData(InputBuff, "Time_Data:\"%s\"", TimeStr.Name._char);
+        AddJsonItemData(InputBuff, "}");
+    } else if (strstr(StrInputBuff, "idset:") != NULL) {
+        newString(gwidstr, 20);
+        char * p = strchr(StrInputBuff, ':');  // 查找冒号的位置
+        if (p != NULL) {
+            p++;  // 移动到冒号后面
+            copyString(gwidstr.Name._char, p, gwidstr.MaxLen, strlen(p));  // 复制字符串
+        } else {
+            printf("Error: 无效的输入格式\n");
+            return;
+        }
+        memset(InputBuff.Name._char, 0, InputBuff.MaxLen);
+        AddJsonItemData(InputBuff, "{");
+        AddJsonItemData(InputBuff, "Write:\"%s\",", "AT24DataJSON");
+        AddJsonItemData(InputBuff, "gw_id:\"%s\"", gwidstr.Name._char);
+        AddJsonItemData(InputBuff, "}");
+    }
+#endif 
+}
+
 // 交互模式（发送和接收数据）
 void InteractiveMode() {
     printf("\n--- 串口交互模式 (按 ESC 退出) ---\n");
@@ -382,38 +425,9 @@ void InteractiveMode() {
                 memset(StrInputBuff, 0, 256);
                 isScanOver = false;
                 continue;
-            }
-#ifdef HY_JSON_CMD
-            else if (strcmp(StrInputBuff, "time_init") == 0) {
-                memset(InputBuff.Name._char, 0, InputBuff.MaxLen);
-                newString(TimeStr, 25);
-                //2025-04-26 13:30:18
-                SYSTEMTIME st;
-                GetLocalTime(&st);  // 获取当前电脑时间
-                snprintf(TimeStr.Name._char, TimeStr.MaxLen, "%04d-%02d-%02d %02d:%02d:%02d",
-                    st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond);
-                AddJsonItemData(InputBuff, "{");
-                AddJsonItemData(InputBuff, "Write:\"%s\",", "AT24DataJSON");
-                AddJsonItemData(InputBuff, "Time_Data:\"%s\"", TimeStr.Name._char);
-                AddJsonItemData(InputBuff, "}");
-            } else if (strstr(StrInputBuff, "idset:") != NULL) {
-                newString(gwidstr, 20);
-                char * p = strchr(StrInputBuff, ':');  // 查找冒号的位置
-                if (p != NULL) {
-                    p++;  // 移动到冒号后面
-                    copyString(gwidstr.Name._char, p, gwidstr.MaxLen, strlen(p));  // 复制字符串
-                } else {
-                    printf("Error: 无效的输入格式\n");
-                    continue;
-                }
-                memset(InputBuff.Name._char, 0, InputBuff.MaxLen);
-                AddJsonItemData(InputBuff, "{");
-                AddJsonItemData(InputBuff, "Write:\"%s\",", "AT24DataJSON");
-                AddJsonItemData(InputBuff, "gw_id:\"%s\"", gwidstr.Name._char);
-                AddJsonItemData(InputBuff, "}");
-            }
-#endif 
-            else {
+            } else if (isSpecialCmd(StrInputBuff)) {
+                SpecialCmdDone(InputBuff);
+            } else {
                 CMD_ChooseFun(InputBuff, false);
             }
             if (isOpenCS_JSon == 1) {
