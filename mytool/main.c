@@ -370,6 +370,7 @@ void InteractiveMode() {
             if (!WriteFile(hSerial, StrInputBuff, strlen(StrInputBuff), &bytesWritten, NULL)) {
                 DWORD error = GetLastError();
                 printf("Error: 发送失败, 错误代码: %lu\n", error);
+                printf("输入 \"recom\" 重连 COM 口\n");
             } else {
                 memset(StrInputBuff, 0, 256);
             }
