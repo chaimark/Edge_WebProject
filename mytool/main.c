@@ -318,6 +318,8 @@ void InteractiveMode() {
                 system("cls");
 #ifdef HY_JSON_CMD
                 printf("\n 基础指令格式 : {'Write':'AT24DataJSON','name':'var'}");
+                printf("\n 特殊指令 \n time_init : {'Write':'AT24DataJSON','Time_Data':'NowTime'}\n");
+                printf("\n idset xxxxxx : {'Write':'AT24DataJSON','gw_id':'xxxxxx'}\n");
 #endif
                 printf("\n 快捷指令: ===============>\n");
                 CMD_ChooseFun(InputBuff, true);
@@ -331,16 +333,30 @@ void InteractiveMode() {
                 newString(TimeStr, 25);
                 //2025-04-26 13:30:18
                 SYSTEMTIME st;
-                GetLocalTime(&st);
+                GetLocalTime(&st);  // 获取当前电脑时间
                 snprintf(TimeStr.Name._char, TimeStr.MaxLen, "%04d-%02d-%02d %02d:%02d:%02d",
                     st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond);
-                // 获取当前电脑时间
                 AddJsonItemData(InputBuff, "{");
                 AddJsonItemData(InputBuff, "Write:\"%s\",", "AT24DataJSON");
                 AddJsonItemData(InputBuff, "Time_Data:\"%s\"", TimeStr.Name._char);
                 AddJsonItemData(InputBuff, "}");
+            } else if (strstr(StrInputBuff, "idset:") != NULL) {
+                newString(gwidstr, 20);
+                char * p = strchr(StrInputBuff, ':');  // 查找冒号的位置
+                if (p != NULL) {
+                    p++;  // 移动到冒号后面
+                    strncpy(gwidstr.Name._char, p, sizeof(gwidstr.Name._char) - 1);  // 复制字符串
+                } else {
+                    printf("Error: 无效的输入格式\n");
+                    continue;
+                }
+                memset(InputBuff.Name._char, 0, InputBuff.MaxLen);
+                AddJsonItemData(InputBuff, "{");
+                AddJsonItemData(InputBuff, "Write:\"%s\",", "AT24DataJSON");
+                AddJsonItemData(InputBuff, "gw_id:\"%s\"", gwidstr.Name._char);
+                AddJsonItemData(InputBuff, "}");
             }
-#endif
+#endif 
             else {
                 CMD_ChooseFun(InputBuff, false);
             }
