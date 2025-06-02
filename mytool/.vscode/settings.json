@@ -4,7 +4,10 @@
         "typeinfo": "c",
         "strlib.h": "c",
         "jsoncheckfun.h": "c",
-        "jsondataanalyzelib.h": "c"
+        "jsondataanalyzelib.h": "c",
+        "windowsshowkey.h": "c",
+        "publicclass.h": "c",
+        "stdexcept": "cpp"
     },
     "files.autoGuessEncoding": true
 }

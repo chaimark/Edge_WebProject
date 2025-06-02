@@ -422,41 +422,41 @@ void InteractiveMode() {
                 system("cls");
                 isScanOver = false;
                 continue;
-                } else if (strcmp(StrInputBuff, "help") == 0) {
-                    system("cls");
+            } else if (strcmp(StrInputBuff, "help") == 0) {
+                system("cls");
 #ifdef HY_JSON_CMD
-                    printf("\n 基础指令格式 : {'Write':'AT24DataJSON','name':'var'}");
-                    printf("\n\n 特殊指令: ===============>\n time_init : {'Write':'AT24DataJSON','Time_Data':'NowTime'}");
-                    printf("\n idset:xxxxxx : {'Write':'AT24DataJSON','gw_id':'xxxxxx'}");
+                printf("\n 基础指令格式 : {'Write':'AT24DataJSON','name':'var'}");
+                printf("\n\n 特殊指令: ===============>\n time_init : {'Write':'AT24DataJSON','Time_Data':'NowTime'}");
+                printf("\n idset:xxxxxx : {'Write':'AT24DataJSON','gw_id':'xxxxxx'}");
 #endif
-                    printf("\n\n 快捷指令: ===============>\n");
-                    CMD_ChooseFun(InputBuff, true);
-                    memset(StrInputBuff, 0, 256);
-                    isScanOver = false;
-                    continue;
-                } else if (isSpecialCmd(StrInputBuff)) {
-                    SpecialCmdDone(InputBuff);
-                } else {
-                    CMD_ChooseFun(InputBuff, false);
-                }
-                if (isOpenCS_JSon == 1) {
-                    AddCsToJsonAndPushJsonStr(newJsonObjectByString(NEW_NAME(StrInputBuff)));
-                }
-                catString(StrInputBuff, "\n", InputBuff.MaxLen, 1);
-                if (!WriteFile(hSerial, StrInputBuff, strlen(StrInputBuff), &bytesWritten, NULL)) {
-                    DWORD error = GetLastError();
-                    printf("Error: 发送失败, 错误代码: %lu\n", error);
-                } else {
-                    memset(StrInputBuff, 0, 256);
-                }
+                printf("\n\n 快捷指令: ===============>\n");
+                CMD_ChooseFun(InputBuff, true);
+                memset(StrInputBuff, 0, 256);
                 isScanOver = false;
+                continue;
+            } else if (isSpecialCmd(StrInputBuff)) {
+                SpecialCmdDone(InputBuff);
+            } else {
+                CMD_ChooseFun(InputBuff, false);
             }
+            if (isOpenCS_JSon == 1) {
+                AddCsToJsonAndPushJsonStr(newJsonObjectByString(NEW_NAME(StrInputBuff)));
+            }
+            catString(StrInputBuff, "\n", InputBuff.MaxLen, 1);
+            if (!WriteFile(hSerial, StrInputBuff, strlen(StrInputBuff), &bytesWritten, NULL)) {
+                DWORD error = GetLastError();
+                printf("Error: 发送失败, 错误代码: %lu\n", error);
+            } else {
+                memset(StrInputBuff, 0, 256);
+            }
+            isScanOver = false;
         }
+    }
 
-        // 关闭线程
+    // 关闭线程
     TerminateThread(hThread, 0);
     CloseHandle(hThread);
-    }
+}
 
 int main() {
     do {
