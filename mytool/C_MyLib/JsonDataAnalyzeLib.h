@@ -10,7 +10,7 @@ typedef struct _JsonArray {
     int (*sizeItemNum)(struct _JsonArray This);                         // 获取Json 数组个数
     signed char (*isJsonNull)(struct _JsonArray This);                         // 判断Json 是否为空
     void (*get)(struct _JsonArray This, strnew OutStr, int ItemNum);    // 获取Json 某元素
-    // 增加流函数
+    void (*getArray)(struct _JsonArray This, strnew OutStr, int ItemNum);    // 获取Json 某元素
 } JsonArray;
 // 方法
 int Arr_sizeItemNum(struct _JsonArray This);

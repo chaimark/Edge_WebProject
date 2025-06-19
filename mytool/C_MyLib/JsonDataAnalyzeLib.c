@@ -87,15 +87,28 @@ int Arr_sizeItemNum(struct _JsonArray This) {
     int ItemNum = 0;
     char * HeadItem = This.JsonString.Name._char + 1;   // 获取第一个元素位置
     char * EndItem = HeadItem;
+    bool isStringArray = false;
+    if (myStrstrCont(This.JsonString.Name._char, "\"", This.JsonString.MaxLen, 2) != NULL) {
+        isStringArray = true;
+    }
     while (*EndItem != '\0') {
         if (isEmpty(&s)) {          // 判断当前栈是否为空，
             if (*EndItem == '{' || *EndItem == '[') {   // 如果是 { 或者 [ 就入栈，
                 push(&s, *EndItem);
-            } else if ((*EndItem == ',') || (*(EndItem + 1) == '\0')) {   // 如果为空，则判断 EndItem 是否是‘,’
-                ItemNum++;                  // 如果是‘,’，则说明是一个元素结束 ItemNum++;
-                HeadItem = EndItem + 1;
-                EndItem = HeadItem;
-                continue;
+            } else if (isStringArray == false) {
+                if ((*EndItem == ',') || (*(EndItem + 1) == '\0')) {   // 如果为空，则判断 EndItem 是否是‘,’
+                    ItemNum++;                  // 如果是‘,’，则说明是一个元素结束 ItemNum++;
+                    HeadItem = EndItem + 1;
+                    EndItem = HeadItem;
+                    continue;
+                }
+            } else {
+                if (((*(EndItem - 1) == '\"') && (*EndItem == ',')) || (*(EndItem + 1) == '\0')) {   // 如果为空，则判断 EndItem 是否是‘,’
+                    ItemNum++;                  // 如果是‘,’，则说明是一个元素结束 ItemNum++;
+                    HeadItem = EndItem + 1;
+                    EndItem = HeadItem;
+                    continue;
+                }
             }
         } else {
             if (*EndItem == '}' || *EndItem == ']') {   // 如果当前栈不为空，则在遇到 } 或者 ] 出栈，
@@ -117,16 +130,31 @@ void Arr_get(struct _JsonArray This, strnew OutStr, int ItemNum) {
     ItemNum++;
     char * HeadItem = This.JsonString.Name._char + 1;   // 获取第一个元素位置
     char * EndItem = HeadItem;
+    bool isStringArray = false;
+    if (myStrstrCont(This.JsonString.Name._char, "\"", This.JsonString.MaxLen, 2) != NULL) {
+        isStringArray = true;
+    }
     while (ItemNum > 0 && *EndItem != '\0') {
         if (isEmpty(&s)) {          // 判断当前栈是否为空，
             if (*EndItem == '{' || *EndItem == '[') {   // 如果是 { 或者 [ 就入栈，
                 push(&s, *EndItem);
-            } else if ((*EndItem == ',') || (*(EndItem + 1) == '\0')) {   // 如果为空，则判断 EndItem 是否是‘,’
-                ItemNum--;                  // 如果是‘,’，则说明是一个元素结束 ItemNum--;
-                if (ItemNum != 0) {
-                    HeadItem = EndItem + 1;
-                    EndItem = HeadItem;
-                    continue;
+            } else if (isStringArray == false) {
+                if ((*EndItem == ',') || (*(EndItem + 1) == '\0')) {   // 如果为空，则判断 EndItem 是否是‘,’
+                    ItemNum--;                  // 如果是‘,’，则说明是一个元素结束 ItemNum--;
+                    if (ItemNum != 0) {
+                        HeadItem = EndItem + 1;
+                        EndItem = HeadItem;
+                        continue;
+                    }
+                }
+            } else {
+                if (((*(EndItem - 1) == '\"') && (*EndItem == ',')) || (*(EndItem + 1) == '\0')) {   // 如果为空，则判断 EndItem 是否是‘,’
+                    ItemNum--;                  // 如果是‘,’，则说明是一个元素结束 ItemNum--;
+                    if (ItemNum != 0) {
+                        HeadItem = EndItem + 1;
+                        EndItem = HeadItem;
+                        continue;
+                    }
                 }
             }
         } else {
@@ -162,7 +190,19 @@ void Arr_get(struct _JsonArray This, strnew OutStr, int ItemNum) {
     }
     OutStr.Name._char[ItemNum] = '\0';
 }
-
+void Arr_getArray(struct _JsonArray This, strnew OutStr, int ItemNum) {
+    if (OutStr.Name._char == This.JsonString.Name._char) {
+        return;
+    }
+    OutStr.Name._char[0] = '[';
+    OutStr.Name._char += 1;
+    OutStr.MaxLen -= 1;
+    This.get(&This, OutStr, ItemNum);
+    catString(OutStr.Name._char, "]", OutStr.MaxLen, 1);
+    OutStr.Name._char -= 1;
+    OutStr.MaxLen += 1;
+    OutStr.Name._char[strlen(OutStr.Name._char)] = '\0';
+}
 JsonArray newJsonArrayByString(strnew DataInit) {
     JsonArray Temp;
     Temp.JsonString = DataInit;
@@ -170,6 +210,7 @@ JsonArray newJsonArrayByString(strnew DataInit) {
     Temp.sizeItemNum = Arr_sizeItemNum;
     Temp.isJsonNull = Arr_isJsonNull;
     Temp.get = Arr_get;
+    Temp.getArray = Arr_getArray;
     return Temp;
 }
 
