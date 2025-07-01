@@ -60,7 +60,6 @@ extern void swapStr(char * IntputStr, int StrLen);
 extern char swapLowHight_Of_Char(char InputCh);
 extern bool MoveDataOnBuff(strnew IntptBuff, int ShiftLen, bool IsLeft);
 extern void StringSlice(strnew OutStr, strnew Mather, int start, int end);
-extern uint32_t getTimeNumber_UTCByRTCTime(strnew RTCTime_String);
 #define strnew_malloc(name,Len) newstrobj(name,1)\
 name.Name._char = (char *)malloc(Len);\
 name.MaxLen = Len
