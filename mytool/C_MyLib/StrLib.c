@@ -1,4 +1,5 @@
 #include "StrLib.h"
+#include "stdint.h"
 #ifdef _Alignas 
 Type_T _InitType(void * var, const char * type) {
     Type_T Temp;
@@ -17,7 +18,7 @@ void swapStr(char * IntputStr, int StrLen);
 char swapLowHight_Of_Char(char InputCh);
 bool MoveDataOnBuff(strnew IntptBuff, int ShiftLen, bool IsLeft);
 void StringSlice(strnew OutStr, strnew Mather, int start, int end);
-
+uint32_t getTimeNumber_UTCByRTCTime(strnew RTCTime_String);
 /*******************************************************************************************************************/
 /*******************************************************************************************************************/
 /*******************************************************************************************************************/
@@ -203,3 +204,31 @@ void StringSlice(strnew OutStr, strnew Mather, int start, int end) {
     }
     memcpy(OutStr.Name._char, &Mather.Name._char[start], NeedLen);
 }
+uint32_t getTimeNumber_UTCByRTCTime(strnew RTCTime_String) {
+#warning "RTCTime_String error";
+    // RTCTime_String.Name._char 格式为 "YYYY-MM-DD HH:MM:SS"
+    int year, month, day, hour, min, sec;
+    // 计算自1970-01-01 00:00:00以来的秒数（UTC时间戳）
+    static const int days_in_month[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
+    uint32_t days = 0;
+
+    // 计算从1970到当前年份的天数
+    for (int y = 1970; y < year; y++) {
+        days += 365;
+        if ((y % 4 == 0 && y % 100 != 0) || (y % 400 == 0))
+            days += 1; // 闰年
+    }
+
+    // 计算当前年内已过的月份天数
+    for (int m = 1; m < month; m++) {
+        days += days_in_month[m - 1];
+        if (m == 2 && ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)))
+            days += 1; // 当前年闰年2月
+    }
+
+    days += (day - 1);
+
+    uint32_t timestamp = days * 86400 + hour * 3600 + min * 60 + sec;
+    return timestamp;
+}
+
