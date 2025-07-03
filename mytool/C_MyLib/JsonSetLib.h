@@ -3,7 +3,7 @@
 
 #include "StrLib.h"
 
-extern void AddJsonItemData(strnew JsonStringSpace, ...);
+extern void AddJsonItemData(strnew JsonStringSpace, const char * FromStr, ...);
 
 #endif
 
