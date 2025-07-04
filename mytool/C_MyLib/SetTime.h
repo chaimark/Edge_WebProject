@@ -9,7 +9,7 @@
 #define SecTo10Ms(sec) (uint64_t)((sec * 100 == 0) ? 1 : (sec * 100))
 #define SecTo5Ms(sec) (uint64_t)((sec * 200 == 0) ? 1 : (sec * 200))
 
-#define BSTIM_OPEN_AND_TASK_NUM 2
+// #define BSTIM_OPEN_AND_TASK_NUM 2
 // #define LPTIM_OPEN_AND_TASK_NUM 0
 
 #ifdef BSTIM_OPEN_AND_TASK_NUM

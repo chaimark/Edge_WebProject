@@ -3,7 +3,8 @@
 
 #include <stdbool.h>
 #include "NumberBaseLib.h"
-// #include "AT24C02.h"
+#ifdef OPEN_FL33LXX_LIB
+#include "AT24C02.h"
 
 #ifndef __AT24C0XXX_H
 typedef struct {
@@ -76,6 +77,6 @@ extern bool checkTimeFrom(FL_RTC_InitTypeDef InputTimeData);
 extern void setIsWriteEEprom(uint8_t UserFlagType);
 #endif
 
-extern void setNetArgumentInit(void (*UserShowdownNowDev)(void)); 
-
+extern void setNetArgumentInit(void (*UserShowdownNowDev)(void));
+#endif
 #endif

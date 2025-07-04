@@ -1,6 +1,7 @@
 #include "AT24CXXDataLoader.h"
 #include "stddef.h"
 #include "StrLib.h"
+#ifdef OPEN_FL33LXX_LIB
 
 struct AT24CXX_MANAGER_S * _AT24CXX_Manager_NET = NULL;
 #ifndef __AT24C0XXX_H
@@ -36,4 +37,4 @@ void setNetArgumentInit(void (*UserShowdownNowDev)(void)) {
     // 初始化 RTC_TASK 任务  
     return;
 }
-
+#endif
