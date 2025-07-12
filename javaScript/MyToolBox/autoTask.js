@@ -6,7 +6,8 @@ window.onload = function () {
     setTimeout(function () {
         // CTwingTask();
         // BaiduTask();
-        douyinVideoTask();
+        // douyinVideoTask();
+        Bilibili_Video_Pro();
     }, 500);
 }
 
