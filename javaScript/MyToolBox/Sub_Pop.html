@@ -4,18 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>输入框示例</title>
+    <title>自适应工具箱</title>
     <link rel="stylesheet" href="Sub_Pop.css">
+    <style>
+        :root {
+            --button-spacing: 8px;
+            --container-padding: 15px;
+        }
+    </style>
 </head>
 
 <body>
     <div class="body-content">
         我的工具箱
     </div>
-    <div class="text-box">
-        <button id="ReadCSDN" type="button" class="button-left-align">Read CSDN</button>
-        <button id="QuizButton" type="button" class="button-left-align">Quiz Button</button>
+    <div class="button-container" id="buttonContainer">
+        <!-- 按钮区域 - 数量可动态调整 -->
+        <button id="ReadCSDN" type="button" class="tool-button">Read CSDN</button>
+        <button id="QuizButton" type="button" class="tool-button">Quiz Button</button>
+        <button id="videoRunButton" type="button" class="tool-button">Video Down</button>
     </div>
+    <!-- 原有功能脚本 -->
     <script type="module" src="./OpenMyPage/OpenPage.js"></script>
     <script type="module" src="./ReadHtml/ReadHtml.js"></script>
     <script type="module" src="./RefreshCTWing/RefreshCTwingTask.js"></script>

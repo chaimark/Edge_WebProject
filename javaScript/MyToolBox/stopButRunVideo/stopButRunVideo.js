@@ -8,8 +8,16 @@ var videoStopButDown_BiliBili = new _videoStopButDown({
 });
 
 function Bilibili_Video_Pro () {
-    let timer = setTimeout(() => {
-        videoStopButDown_BiliBili.StopButDownTask("TouchGestureForbidScroll");
-    }, 3000);
-
+    let isRun = false;
+    if (isRun) return;
+    chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+        if (request.action === 'runStopVideoRnuDownScript') {
+            sendResponse('run ok.');
+            let timer = setTimeout(() => {
+                videoStopButDown_BiliBili.StopButDownTask("TouchGestureForbidScroll");
+                clearTimeout(timer);
+                isRun = true;
+            }, 1000);
+        }
+    });
 }

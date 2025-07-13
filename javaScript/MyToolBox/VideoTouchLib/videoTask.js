@@ -98,13 +98,12 @@ class _videoStopButDown {
         this.originalTime = 0;
         this.Count = 0;
         this.state = 'idle'; // idle, buffering, paused, finished
-        this.openButton();
     }
 
     openButton () {
         const btn = document.createElement('button');
         btn.id = 'chai_bilibil';
-        btn.textContent = '点击开始缓冲';
+        btn.textContent = '双击开始缓冲';
         Object.assign(btn.style, {
             position: 'absolute',
             left: '100px',
@@ -168,7 +167,7 @@ class _videoStopButDown {
         this._updateButton('继续缓冲', false);
         this._emitState();
         if (resetTime) {
-            this.video.currentTime = this.originalTime;
+            this.video.currentTime = this.originalTime + 10;
         }
     }
 
@@ -183,7 +182,7 @@ class _videoStopButDown {
             if (buffered.length > 0) {
                 const end = buffered.end(buffered.length - 1);
                 if (this.video.currentTime < end - this.threshold) {
-                    this.video.currentTime = Math.min(this.video.currentTime + this.step, end - 0.01);
+                    this.video.currentTime = Math.min(this.video.currentTime + this.step, end - 10);
                 } else {
                     this.stopBuffer();
                     this._updateButton('缓冲已完成', false);
@@ -229,6 +228,7 @@ class _videoStopButDown {
     }
 
     StopButDownTask (video_class) {
+        this.openButton();
         this.video_class = video_class;
         // 根据不同的类型, 获取页面中的某个元素
         this.video = document.querySelector('video.' + video_class);
