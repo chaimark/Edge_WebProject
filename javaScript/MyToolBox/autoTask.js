@@ -4,8 +4,9 @@ window.onload = function () {
         clearTimeout(timer);
         // CTwingTask();
         // BaiduTask();
-        // douyinVideoTask();
+        douyinVideoTask();
         Bilibili_Video_Pro();
+        Mmkv_Video_Pro();
     }, 500);
 }
 

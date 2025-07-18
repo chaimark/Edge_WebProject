@@ -38,6 +38,7 @@
                 "./RefreshBaidu/RefreshBaiduTask.js",
                 "./UrlDoingLib/UrlDoingLib.js",
                 "./VideoTouchLib/videoTask.js",
+                "./VideoTouchLib/stopRun_All.js",
                 "./douyinVideoTask/douyinTask.js",
                 "./stopButRunVideo/stopButRunVideo.js",
                 "./autoTask.js"
