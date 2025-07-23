@@ -5,8 +5,9 @@ window.onload = function () {
         // CTwingTask();
         // BaiduTask();
         douyinVideoTask();
-        Bilibili_Video_Pro();
-        Mmkv_Video_Pro();
+        Bilibili_Video_Pro();   // bilibili 脚本视频
+        Mmkv_Video_Pro();       // mmkv 脚本视频
+        xigua_Video_Pro();      // 西瓜动漫视频
     }, 500);
 }
 
