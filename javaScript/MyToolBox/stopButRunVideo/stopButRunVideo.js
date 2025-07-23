@@ -57,7 +57,7 @@ function Mmkv_Video_Pro () {
 }
 
 ////////////////////////////////////////
-var videoStopButDown_xigua = new _videoStopButDown({
+var videoStopButDown_2rk = new _videoStopButDown({
     step: 0.2,
     interval: 400,
     threshold: 1,
@@ -66,18 +66,18 @@ var videoStopButDown_xigua = new _videoStopButDown({
     }
 });
 
-function xigua_Video_Pro () {
+function TwoRK_Video_Pro () {
     let isRun = false;
     if (isRun) return;
-    if (!isUserPage("dailygh")) {
-        console.log("当前页面不是" + "xigua");
+    if (!isUserPage("2rk")) {
+        console.log("当前页面不是" + "2rk");
         return;
     }
     chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         if (request.action === 'runStopVideoRnuDownScript') {
             sendResponse('run ok.');
             let timer = setTimeout(() => {
-                videoStopButDown_xigua.StopButDownTask("#video_frame");
+                videoStopButDown_2rk.StopButDownTask('video[style="outline:0"]');
                 clearTimeout(timer);
                 isRun = true;
             }, 1000);
