@@ -78,9 +78,9 @@ class _videoStopButDown {
         }
         this._updateButton('继续缓冲', false);
         this._emitState();
-        if (resetTime) {
-            this.video.currentTime = this.originalTime + 10;
-        }
+        // if (resetTime) {
+        //     this.video.currentTime = this.originalTime + 10;
+        // }
     }
 
     startBuffer () {
@@ -96,6 +96,7 @@ class _videoStopButDown {
                 if (this.video.currentTime < end - this.threshold) {
                     this.video.currentTime = Math.min(this.video.currentTime + this.step, end - 10);
                 } else {
+                    this.originalTime = this.video.currentTime;
                     this.stopBuffer();
                     this._updateButton('缓冲已完成', false);
                     this.state = 'finished';
@@ -112,7 +113,6 @@ class _videoStopButDown {
         let timer = setTimeout(() => {
             if (this.Count === 1) {
                 // 单击逻辑,触发拖动
-                this.video.currentTime = this.originalTime;
                 clearTimeout(timer);
             } else if (this.Count == 2) {
                 // 双击逻辑,触发缓冲
