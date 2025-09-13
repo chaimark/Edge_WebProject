@@ -2,12 +2,12 @@
 window.onload = function () {
     let timer = setTimeout(function () {
         clearTimeout(timer);
-        // CTwingTask();
+        CTwingTask();
         // BaiduTask();
-        douyinVideoTask();
-        Bilibili_Video_Pro();   // bilibili 脚本视频
-        Mmkv_Video_Pro();       // mmkv 脚本视频
-        TwoRK_Video_Pro();      // 2rk视频
+        // douyinVideoTask();
+        // Bilibili_Video_Pro();   // bilibili 脚本视频
+        // Mmkv_Video_Pro();       // mmkv 脚本视频
+        // TwoRK_Video_Pro();      // 2rk视频
     }, 500);
 }
 
