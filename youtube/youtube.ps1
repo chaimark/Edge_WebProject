@@ -42,16 +42,16 @@ function ShowProcess {
 }
 
 $ClashRunning = $true
-# 检查 Clash for Windows 是否正在运行
-$clashProcess = Get-Process | Where-Object { $_.ProcessName -eq "Clash for Windows" }
+# 检查 v2rayN 是否正在运行
+$clashProcess = Get-Process | Where-Object { $_.ProcessName -eq "v2rayN" }
 if (-not $clashProcess) {
     $ClashRunning = $false
 }
 
 # 主逻辑
 if ($ClashRunning) {
-    Write-Host "正在关闭Clash for Windows.exe"
-    Stop-Process -Name "Clash for Windows" -Force
+    Write-Host "正在关闭 v2rayN"
+    Stop-Process -Name "v2rayN" -Force
 
     # 清除 Git 代理设置
     git config --global --unset http.proxy
@@ -71,14 +71,14 @@ if ($ClashRunning) {
     # Start-Process ms-settings:network-proxy 
 }
 else {
-    Write-Host "Clash for Windows 未运行。"
+    Write-Host "v2rayN 未运行。"
     # 设置 Git 代理
     git config --global http.proxy http://127.0.0.1:7890
     git config --global https.proxy https://127.0.0.1:7890
     
     # 打开 youtube
     Start-Process "https://www.youtube.com"
-    # 启动 Clash for Windows
-    Start-Process -Filepath "D:\Program Files\Clash for Windows\Clash for Windows.exe"
+    # 启动 v2rayN
+    Start-Process -Filepath "D:\Program Files\v2rayN\v2rayN.exe"
 }
 exit
