@@ -4,7 +4,7 @@ static void _RTCCloseTask(int TaskAddr);
 static void _InitRTCTask(int TaskAddr, uint64_t SetCountMaxNum, void (*TaskFunc)(void));
 
 USER_SET_TASK RTC_TASK = {
-    .Task = {0},
+    .Task = {{0}},
     .InitSetTimeTask = _InitRTCTask,
     .CloseTask = _RTCCloseTask,
     .NumberOfTimeTask = RTCTimeTaskMAX, // 定时任务数量

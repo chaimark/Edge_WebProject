@@ -40,7 +40,7 @@ echo 链接对象文件: !OBJS!
 
 :: 链接所有目标文件
 echo 正在链接 %OUTPUT%...
-%CC% %CFLAGS% !OBJS! "./outflie/demo.o" -o %OUTPUT% -lSetupAPI
+%CC% %CFLAGS% !OBJS! "./outflie/demo.o" -o %OUTPUT% -lsetupapi -luuid
 if errorlevel 1 (
     echo 链接失败
     exit /b 1

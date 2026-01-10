@@ -6,7 +6,7 @@ static void _InitSetTimeTask(int TaskAddr, uint64_t SetMax10MsNum, void (*TaskFu
 
 // 可自定义的定时任务
 BSTIM_USER_SET_TASK SetTime = {
-    .Task = {0},
+    .Task = {{0}},
     .InitSetTimeTask = _InitSetTimeTask,
     .CloseTask = _SetCloseTask,
     .NumberOfTimeTask = BSTIM_OPEN_AND_TASK_NUM, // 定时任务数量
@@ -67,7 +67,7 @@ static void _LPInitSetTimeTask(int TaskAddr, uint64_t SetMax250MsNum, void (*Tas
 
 // 可自定义的定时任务
 LPTIM_USER_SET_TASK SetLPTime = {
-    .Task = {0},
+    .Task = {{0}},
     .LPInitSetTimeTask = _LPInitSetTimeTask,
     .CloseTask = _LPSetCloseTask,
     .NumberOfTimeTask = LPTIM_OPEN_AND_TASK_NUM, // 定时任务数量

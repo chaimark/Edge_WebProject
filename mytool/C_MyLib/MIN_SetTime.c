@@ -5,7 +5,7 @@ static void _MinRTCCloseTask(int TaskAddr);
 static void _MinInitRTCTask(int TaskAddr, uint64_t SetCountMaxNum, void (*TaskFunc)(void));
 
 USER_MIN_SET_TASK MIN_TASK = {
-    .Task = {0},
+    .Task = {{0}},
     .InitSetTimeTask = _MinInitRTCTask,
     .CloseTask = _MinRTCCloseTask,
     .NumberOfTimeTask = MINTimeTaskMAX, // 定时任务数量
@@ -63,7 +63,7 @@ static void _Min_10_RTCCloseTask(int TaskAddr);
 static void _Min_10_InitRTCTask(int TaskAddr, uint64_t SetCountMaxNum, void (*TaskFunc)(void));
 
 USER_Min_10_SET_TASK Min_10_TASK = {
-    .Task = {0},
+    .Task = {{0}},
     .InitSetTimeTask = _Min_10_InitRTCTask,
     .CloseTask = _Min_10_RTCCloseTask,
     .NumberOfTimeTask = Min_10_TimeTaskMAX, // 定时任务数量
@@ -121,7 +121,7 @@ static void _Min_15_RTCCloseTask(int TaskAddr);
 static void _Min_15_InitRTCTask(int TaskAddr, uint64_t SetCountMaxNum, void (*TaskFunc)(void));
 
 USER_Min_15_SET_TASK Min_15_TASK = {
-    .Task = {0},
+    .Task = {{0}},
     .InitSetTimeTask = _Min_15_InitRTCTask,
     .CloseTask = _Min_15_RTCCloseTask,
     .NumberOfTimeTask = Min_15_TimeTaskMAX, // 定时任务数量
