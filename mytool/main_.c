@@ -1,38 +1,39 @@
 #define INITGUID
-#include <windows.h>
-#include <stdio.h>
-#include <string.h>
-#include <conio.h>  // 用于 _kbhit() 和 _getch()
-#include <initguid.h>
-#include <devguid.h>
-#include <setupapi.h>
-#include <tchar.h>
-#include "./C_MyLib/StrLib.h"
+#include "./C_MyLib/JsonCheckFun.h"
 #include "./C_MyLib/JsonDataAnalyzeLib.h"
 #include "./C_MyLib/JsonSetLib.h"
-#include "./C_MyLib/JsonCheckFun.h"
+#include "./C_MyLib/StrLib.h"
+#include <conio.h> // 用于 _kbhit() 和 _getch()
+#include <devguid.h>
+#include <initguid.h>
+#include <setupapi.h>
+#include <stdio.h>
+#include <string.h>
+#include <tchar.h>
+#include <windows.h>
 
 HANDLE hSerial;
-DWORD baudRate = CBR_9600;
-BYTE byteSize = 8;
-BYTE stopBits = ONESTOPBIT;
-BYTE parity = NOPARITY;
-int isOpenCS_JSon = 0;
-char portName[10] = "COM3";
-void clsInputSpace(void) {
+DWORD  baudRate      = CBR_9600;
+BYTE   byteSize      = 8;
+BYTE   stopBits      = ONESTOPBIT;
+BYTE   parity        = NOPARITY;
+int    isOpenCS_JSon = 0;
+char   portName[10]  = "COM3";
+void   clsInputSpace(void) {
     char ch = 0;
-    while ((ch = getchar()) != '\n' && ch != EOF);
+    while ((ch = getchar()) != '\n' && ch != EOF)
+        ;
 }
 // 线程函数：接收串口数据
 DWORD WINAPI ReadSerialThread(LPVOID lpParam) {
-    char buffer[256];
+    char  buffer[256];
     DWORD bytesRead;
 
     while (1) {
         Sleep(1);
         if (ReadFile(hSerial, buffer, sizeof(buffer) - 1, &bytesRead, NULL)) {
             if (bytesRead > 0) {
-                buffer[bytesRead] = '\0';  // 确保字符串终止
+                buffer[bytesRead] = '\0'; // 确保字符串终止
                 printf("%s", buffer);
                 memset(buffer, 0, 256);
             }
@@ -54,10 +55,10 @@ void ConfigureSerialPort() {
     printf("请输入串口号 (如 COM3): ");
     char userInput[10];
     scanf("%s", userInput);
-    snprintf(portName, sizeof(portName), "\\\\.\\%s", userInput);  // 格式化为 \\.\COM11
+    snprintf(portName, sizeof(portName), "\\\\.\\%s", userInput); // 格式化为 \\.\COM11
 
     // 选择波特率
-    int CBR_S[] = {CBR_1200,CBR_2400,CBR_4800,CBR_9600,CBR_19200,CBR_38400,CBR_57600,CBR_115200};
+    int CBR_S[] = {CBR_1200, CBR_2400, CBR_4800, CBR_9600, CBR_19200, CBR_38400, CBR_57600, CBR_115200};
     printf("\n选择波特率:\n");
     for (int i = 0; i < ARR_SIZE(CBR_S); i++) {
         printf("%d. %d\n", i, CBR_S[i]);
@@ -66,8 +67,12 @@ void ConfigureSerialPort() {
     int choice = 0xFF; // 默认 2400
     scanf("%d", &choice);
     switch (choice) {
-        case 0xFF: baudRate = CBR_2400; break;
-        default: baudRate = (choice < ARR_SIZE(CBR_S) ? CBR_S[choice] : CBR_2400); break;
+    case 0xFF:
+        baudRate = CBR_2400;
+        break;
+    default:
+        baudRate = (choice < ARR_SIZE(CBR_S) ? CBR_S[choice] : CBR_2400);
+        break;
     }
 
     // 选择数据位
@@ -82,10 +87,18 @@ void ConfigureSerialPort() {
     scanf("%d", &choice);
 
     switch (choice) {
-        case 1: stopBits = ONESTOPBIT; break;
-        case 2: stopBits = ONE5STOPBITS; break;
-        case 3: stopBits = TWOSTOPBITS; break;
-        default: stopBits = ONESTOPBIT; break;
+    case 1:
+        stopBits = ONESTOPBIT;
+        break;
+    case 2:
+        stopBits = ONE5STOPBITS;
+        break;
+    case 3:
+        stopBits = TWOSTOPBITS;
+        break;
+    default:
+        stopBits = ONESTOPBIT;
+        break;
     }
 
     // 选择校验位
@@ -95,10 +108,18 @@ void ConfigureSerialPort() {
     scanf("%d", &choice);
 
     switch (choice) {
-        case 1: parity = NOPARITY; break;
-        case 2: parity = ODDPARITY; break;
-        case 3: parity = EVENPARITY; break;
-        default: parity = NOPARITY; break;
+    case 1:
+        parity = NOPARITY;
+        break;
+    case 2:
+        parity = ODDPARITY;
+        break;
+    case 3:
+        parity = EVENPARITY;
+        break;
+    default:
+        parity = NOPARITY;
+        break;
     }
 
 #ifdef HY_JSON_CMD
@@ -109,9 +130,9 @@ void ConfigureSerialPort() {
 
 // 显示所有可用串口
 void ListAvailablePorts() {
-    HDEVINFO hDevInfo;
+    HDEVINFO        hDevInfo;
     SP_DEVINFO_DATA DeviceInfoData;
-    DWORD i;
+    DWORD           i;
 
     // 获取设备信息集合
     hDevInfo = SetupDiGetClassDevs(&GUID_DEVCLASS_PORTS, 0, 0, DIGCF_PRESENT);
@@ -127,13 +148,11 @@ void ListAvailablePorts() {
         TCHAR devicePort[256];
 
         // 获取设备名称
-        if (SetupDiGetDeviceRegistryProperty(
-            hDevInfo, &DeviceInfoData, SPDRP_FRIENDLYNAME,
-            NULL, (PBYTE)deviceName, sizeof(deviceName), NULL)) {
+        if (SetupDiGetDeviceRegistryProperty(hDevInfo, &DeviceInfoData, SPDRP_FRIENDLYNAME, NULL, (PBYTE)deviceName,
+                                             sizeof(deviceName), NULL)) {
             // 获取端口号
-            if (SetupDiGetDeviceRegistryProperty(
-                hDevInfo, &DeviceInfoData, SPDRP_PHYSICAL_DEVICE_OBJECT_NAME,
-                NULL, (PBYTE)devicePort, sizeof(devicePort), NULL)) {
+            if (SetupDiGetDeviceRegistryProperty(hDevInfo, &DeviceInfoData, SPDRP_PHYSICAL_DEVICE_OBJECT_NAME, NULL,
+                                                 (PBYTE)devicePort, sizeof(devicePort), NULL)) {
                 _tprintf(_T("设备: %s\n"), deviceName);
             }
         }
@@ -145,25 +164,14 @@ void ListAvailablePorts() {
 
 // 打开串口
 BOOL OpenSerialPort() {
-    hSerial = CreateFile(
-        portName,
-        GENERIC_READ | GENERIC_WRITE,
-        0,
-        NULL,
-        OPEN_EXISTING,
-        FILE_ATTRIBUTE_NORMAL,
-        NULL
-    );
+    hSerial = CreateFile(portName, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 
     printf("波特率: %ld\n", baudRate);
     printf("数据位: %d\n", byteSize);
     printf("停止位: %s\n",
-        (stopBits == ONESTOPBIT ? "1" :
-        (stopBits == ONE5STOPBITS ? "1.5" :
-        (stopBits == TWOSTOPBITS ? "2" : "error"))));
-    printf("校验位: %s\n",
-        (parity == NOPARITY) ? "无" :
-        (parity == ODDPARITY) ? "奇校验" : "偶校验");
+           (stopBits == ONESTOPBIT ? "1"
+                                   : (stopBits == ONE5STOPBITS ? "1.5" : (stopBits == TWOSTOPBITS ? "2" : "error"))));
+    printf("校验位: %s\n", (parity == NOPARITY) ? "无" : (parity == ODDPARITY) ? "奇校验" : "偶校验");
 
     // 添加等待以提高打开串口的成功率
     Sleep(100);
@@ -183,12 +191,12 @@ BOOL OpenSerialPort() {
     }
 
     // 配置串口参数
-    COMMTIMEOUTS timeouts; //定义超时结构，并填写该结构 
-    timeouts.ReadIntervalTimeout = 1;
-    timeouts.ReadTotalTimeoutMultiplier = 1;
-    timeouts.ReadTotalTimeoutConstant = 1;
+    COMMTIMEOUTS timeouts; // 定义超时结构，并填写该结构
+    timeouts.ReadIntervalTimeout         = 1;
+    timeouts.ReadTotalTimeoutMultiplier  = 1;
+    timeouts.ReadTotalTimeoutConstant    = 1;
     timeouts.WriteTotalTimeoutMultiplier = 10;
-    timeouts.WriteTotalTimeoutConstant = 10;
+    timeouts.WriteTotalTimeoutConstant   = 10;
 
     if (!SetCommTimeouts(hSerial, &timeouts)) {
         printf("Error: 无法设置串口超时\n");
@@ -197,7 +205,7 @@ BOOL OpenSerialPort() {
         return FALSE;
     }
 
-    DCB dcbSerialParams = {0};
+    DCB dcbSerialParams       = {0};
     dcbSerialParams.DCBlength = sizeof(dcbSerialParams);
 
     if (!GetCommState(hSerial, &dcbSerialParams)) {
@@ -210,7 +218,7 @@ BOOL OpenSerialPort() {
     dcbSerialParams.BaudRate = baudRate;
     dcbSerialParams.ByteSize = byteSize;
     dcbSerialParams.StopBits = stopBits;
-    dcbSerialParams.Parity = parity;
+    dcbSerialParams.Parity   = parity;
 
     if (!SetCommState(hSerial, &dcbSerialParams)) {
         printf("Error: 无法设置串口参数\n");
@@ -225,18 +233,19 @@ BOOL OpenSerialPort() {
 
 // 获取缓冲区的字符，并返回是否按下回车
 bool myGetS(strnew SpaceBuf) {
-    if (_kbhit()) {  // 检测是否有键盘输入
+    if (_kbhit()) { // 检测是否有键盘输入
         gets(SpaceBuf.Name._char);
         return true;
     }
-    return false;  // 未按下回车
+    return false; // 未按下回车
 }
 
 void DisplayHelp(strnew CmdName, strnew CmdVar) {
     printf("\n>> %s : \n   %s\n", CmdName.Name._char, CmdVar.Name._char);
 }
 
-#define initString_Txt "{\
+#define initString_Txt                                                                                                 \
+    "{\
     \"cmd_Name_Array\": [\
         \"init\",\
         \"read\",\
@@ -251,12 +260,12 @@ void DisplayHelp(strnew CmdName, strnew CmdVar) {
     ]\
 }"
 
-const char * initStr = initString_Txt;
-void CMD_ChooseFun(strnew InputBuff, bool UserFlag) {
-    FILE * configFile = fopen("config.json", "r");
+const char* initStr = initString_Txt;
+void        CMD_ChooseFun(strnew InputBuff, bool UserFlag) {
+    FILE* configFile = fopen("config.json", "r");
     if (configFile == NULL) {
         printf("Error: 无法打开配置文件 config.json\n");
-        FILE * configFileW = fopen("config.json", "w");
+        FILE* configFileW = fopen("config.json", "w");
         if (configFileW != NULL) {
             fprintf(configFileW, "%s", initStr);
             fclose(configFileW);
@@ -272,14 +281,14 @@ void CMD_ChooseFun(strnew InputBuff, bool UserFlag) {
     fseek(configFile, 0, SEEK_SET);
 
     strnew_malloc(JsonConfig, fileSize + 20);
-    char ch;
+    char   ch;
     size_t index = 0;
     while ((ch = fgetc(configFile)) != EOF) {
         JsonConfig.Name._char[index++] = ch;
     }
     fclose(configFile);
     JsonObject JsonConfigObj = newJsonObjectByString(JsonConfig);
-    // 读取 cmd_num 
+    // 读取 cmd_num
     if (JsonConfigObj.isJsonNull(&JsonConfigObj, "cmd_Name_Array") < 0) {
         goto EndOver2;
     }
@@ -289,10 +298,11 @@ void CMD_ChooseFun(strnew InputBuff, bool UserFlag) {
     strnew_malloc(ArrNameSpace, fileSize + 20);
     strnew_malloc(ArrVarSpace, fileSize + 20);
     JsonArray Cmd_Array_Name = JsonConfigObj.getArray(&JsonConfigObj, "cmd_Name_Array", ArrNameSpace);
-    JsonArray Cmd_Array_Var = JsonConfigObj.getArray(&JsonConfigObj, "cmd_Var_Array", ArrVarSpace);
+    JsonArray Cmd_Array_Var  = JsonConfigObj.getArray(&JsonConfigObj, "cmd_Var_Array", ArrVarSpace);
 
-    int cmd_num = (Cmd_Array_Name.sizeItemNum(&Cmd_Array_Name) == Cmd_Array_Var.sizeItemNum(&Cmd_Array_Var) ?
-        Cmd_Array_Name.sizeItemNum(&Cmd_Array_Name) : 0);
+    int cmd_num = (Cmd_Array_Name.sizeItemNum(&Cmd_Array_Name) == Cmd_Array_Var.sizeItemNum(&Cmd_Array_Var)
+                              ? Cmd_Array_Name.sizeItemNum(&Cmd_Array_Name)
+                              : 0);
     newString(TempCmd_Name, 2048);
     newString(TempCmd_Var, 2048);
     for (int i = 0; i < cmd_num; i++) {
@@ -316,7 +326,7 @@ EndOver1:
 EndOver2:
     free(JsonConfig.Name._char);
     if (isOpenCS_JSon == 1) {
-        char * P_Node = NULL;
+        char* P_Node = NULL;
         do {
             P_Node = NULL;
             P_Node = strchr(InputBuff.Name._char, '\'');
@@ -330,7 +340,7 @@ EndOver2:
 }
 
 // 特殊指令，需要程序组织
-bool isSpecialCmd(char * CmdStr) {
+bool isSpecialCmd(char* CmdStr) {
     if (strcmp(CmdStr, "time_init") == 0) {
         return true;
     } else if (strstr(CmdStr, "idset:") != NULL) {
@@ -340,25 +350,25 @@ bool isSpecialCmd(char * CmdStr) {
 }
 void SpecialCmdDone(strnew InputBuff) {
 #ifdef HY_JSON_CMD
-    char * StrInputBuff = InputBuff.Name._char;
+    char* StrInputBuff = InputBuff.Name._char;
     if (strcmp(StrInputBuff, "time_init") == 0) {
         memset(InputBuff.Name._char, 0, InputBuff.MaxLen);
         newString(TimeStr, 25);
-        //2025-04-26 13:30:18
+        // 2025-04-26 13:30:18
         SYSTEMTIME st;
-        GetLocalTime(&st);  // 获取当前电脑时间
-        snprintf(TimeStr.Name._char, TimeStr.MaxLen, "%04d-%02d-%02d %02d:%02d:%02d",
-            st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond);
+        GetLocalTime(&st); // 获取当前电脑时间
+        snprintf(TimeStr.Name._char, TimeStr.MaxLen, "%04d-%02d-%02d %02d:%02d:%02d", st.wYear, st.wMonth, st.wDay,
+                 st.wHour, st.wMinute, st.wSecond);
         AddJsonItemData(InputBuff, "{");
         AddJsonItemData(InputBuff, "Write:\"%s\",", "AT24DataJSON");
         AddJsonItemData(InputBuff, "Time_Data:\"%s\"", TimeStr.Name._char);
         AddJsonItemData(InputBuff, "}");
     } else if (strstr(StrInputBuff, "idset:") != NULL) {
         newString(gwidstr, 20);
-        char * p = strchr(StrInputBuff, ':');  // 查找冒号的位置
+        char* p = strchr(StrInputBuff, ':'); // 查找冒号的位置
         if (p != NULL) {
-            p++;  // 移动到冒号后面
-            copyString(gwidstr.Name._char, p, gwidstr.MaxLen, strlen(p));  // 复制字符串
+            p++;                                                          // 移动到冒号后面
+            copyString(gwidstr.Name._char, p, gwidstr.MaxLen, strlen(p)); // 复制字符串
         } else {
             printf("Error: 无效的输入格式\n");
             return;
@@ -369,7 +379,7 @@ void SpecialCmdDone(strnew InputBuff) {
         AddJsonItemData(InputBuff, "gw_id:\"%s\"", gwidstr.Name._char);
         AddJsonItemData(InputBuff, "}");
     }
-#endif 
+#endif
 }
 
 // 交互模式（发送和接收数据）
@@ -391,14 +401,14 @@ void InteractiveMode() {
         isScanOver = myGetS(InputBuff);
         DWORD bytesWritten;
         if (isScanOver) {
-            if (strcmp(StrInputBuff, "recom") == 0) {  // 重连 COM 口
-                CloseHandle(hSerial);   // 关闭串口
-                for (int i = 0; i < 3 && !OpenSerialPort(); i++) {  // 尝试重新打开串口
+            if (strcmp(StrInputBuff, "recom") == 0) {              // 重连 COM 口
+                CloseHandle(hSerial);                              // 关闭串口
+                for (int i = 0; i < 3 && !OpenSerialPort(); i++) { // 尝试重新打开串口
                     printf("重连失败,3 秒后重试...\n");
                     Sleep(3000);
                 }
                 if (hSerial != INVALID_HANDLE_VALUE) {
-                    PurgeComm(hSerial, PURGE_RXCLEAR | PURGE_TXCLEAR);  // 清空缓冲区
+                    PurgeComm(hSerial, PURGE_RXCLEAR | PURGE_TXCLEAR); // 清空缓冲区
                     if (hThread != NULL) {
                         TerminateThread(hThread, 0);
                         CloseHandle(hThread);
@@ -412,7 +422,7 @@ void InteractiveMode() {
                 }
             } else if (strcmp(StrInputBuff, "deljson") == 0) {
                 system("del -f config.json");
-                FILE * configFile = fopen("config.json", "r");
+                FILE* configFile = fopen("config.json", "r");
                 if (configFile == NULL) {
                     printf("删除配置文件 config.json 成功\n");
                 } else {
@@ -466,13 +476,13 @@ int main() {
         printf("\n--- 可用串口列表 ---\n");
         ListAvailablePorts();
         printf("===== 串口终端模拟器 =====\n");
-        ConfigureSerialPort();  // 配置串口
+        ConfigureSerialPort(); // 配置串口
         clsInputSpace();
     } while (!OpenSerialPort());
 
-    InteractiveMode();  // 进入交互模式
+    InteractiveMode(); // 进入交互模式
 
-    CloseHandle(hSerial);  // 关闭串口
+    CloseHandle(hSerial); // 关闭串口
     printf("\n串口已关闭, 程序结束。\n");
     return 0;
 }

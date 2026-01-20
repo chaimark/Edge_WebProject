@@ -1,7 +1,7 @@
-#include <windows.h>
-#include <stdio.h>
 #include <conio.h>
 #include <process.h>
+#include <stdio.h>
+#include <windows.h>
 
 // 兼容性处理：如果头文件里没有这个宏，手动定义它
 #ifndef ENABLE_VIRTUAL_TERMINAL_PROCESSING
@@ -9,12 +9,13 @@
 #endif
 
 HANDLE hSerial;
-BOOL bRunning = TRUE;
+BOOL   bRunning = TRUE;
 
 // 初始化控制台，支持 ANSI 转义序列
 void EnableVTMode() {
     HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-    if (hOut == INVALID_HANDLE_VALUE) return;
+    if (hOut == INVALID_HANDLE_VALUE)
+        return;
 
     DWORD dwMode = 0;
     if (GetConsoleMode(hOut, &dwMode)) {
@@ -26,8 +27,8 @@ void EnableVTMode() {
 }
 
 // 串口读取线程：负责把开发板传回的数据实时显示
-void ReadThread(void * param) {
-    char buf[1024];
+void ReadThread(void* param) {
+    char  buf[1024];
     DWORD bytesRead;
     while (bRunning) {
         if (ReadFile(hSerial, buf, sizeof(buf) - 1, &bytesRead, NULL) && bytesRead > 0) {
@@ -52,19 +53,21 @@ void ListPorts() {
             CloseHandle(hTest);
         }
     }
-    if (found == 0) printf("  No active COM ports found.\n");
+    if (found == 0)
+        printf("  No active COM ports found.\n");
     printf("-------------------------------\n");
 }
 
 int main() {
     char portInput[20];
-    int baudRate = 115200;
+    int  baudRate = 115200;
 
     ListPorts();
     printf("Enter port (e.g. COM3): ");
     scanf("%s", portInput);
     printf("Enter baudrate (default 115200): ");
-    if (scanf("%d", &baudRate) != 1) baudRate = 115200;
+    if (scanf("%d", &baudRate) != 1)
+        baudRate = 115200;
 
     char fullPortName[20];
     sprintf(fullPortName, "\\\\.\\%s", portInput);
@@ -78,19 +81,19 @@ int main() {
     }
 
     // 配置串口参数
-    DCB dcb = {0};
+    DCB dcb       = {0};
     dcb.DCBlength = sizeof(dcb);
     GetCommState(hSerial, &dcb);
     dcb.BaudRate = baudRate;
     dcb.ByteSize = 8;
     dcb.StopBits = ONESTOPBIT;
-    dcb.Parity = NOPARITY;
+    dcb.Parity   = NOPARITY;
     SetCommState(hSerial, &dcb);
 
     // 设置超时：防止 ReadFile 永久阻塞
-    COMMTIMEOUTS timeouts = {0};
-    timeouts.ReadIntervalTimeout = 50;
-    timeouts.ReadTotalTimeoutConstant = 10;
+    COMMTIMEOUTS timeouts               = {0};
+    timeouts.ReadIntervalTimeout        = 50;
+    timeouts.ReadTotalTimeoutConstant   = 10;
     timeouts.ReadTotalTimeoutMultiplier = 1;
     SetCommTimeouts(hSerial, &timeouts);
 
@@ -105,27 +108,36 @@ int main() {
     // 主线程：监听键盘并实时发送
     while (bRunning) {
         if (_kbhit()) {
-            int ch = _getch();
+            int   ch = _getch();
             DWORD written;
 
             if (ch == 0 || ch == 0xE0) {
                 // 处理方向键 (转换为 ANSI 转义序列)
-                ch = _getch();
-                const char * seq = NULL;
+                ch              = _getch();
+                const char* seq = NULL;
                 switch (ch) {
-                    case 72: seq = "\x1b[A"; break; // Up
-                    case 80: seq = "\x1b[B"; break; // Down
-                    case 77: seq = "\x1b[C"; break; // Right
-                    case 75: seq = "\x1b[D"; break; // Left
+                case 72:
+                    seq = "\x1b[A";
+                    break; // Up
+                case 80:
+                    seq = "\x1b[B";
+                    break; // Down
+                case 77:
+                    seq = "\x1b[C";
+                    break; // Right
+                case 75:
+                    seq = "\x1b[D";
+                    break; // Left
                 }
-                if (seq) WriteFile(hSerial, seq, (DWORD)strlen(seq), &written, NULL);
+                if (seq)
+                    WriteFile(hSerial, seq, (DWORD)strlen(seq), &written, NULL);
             } else if (ch == 13) {
                 // 处理回车：Linux 通常需要 \r
                 char r = '\r';
                 WriteFile(hSerial, &r, 1, &written, NULL);
             } else {
                 // 处理普通按键
-                char c = (char)ch;
+                char  c = (char)ch;
                 DWORD written;
                 WriteFile(hSerial, &c, 1, &written, NULL);
 
