@@ -1,4 +1,3 @@
-// 检查当前页面是否是 baidu
 function BaiduTask () {
     if (isUserPage("baidu")) {
         startAutoRefresh(5);

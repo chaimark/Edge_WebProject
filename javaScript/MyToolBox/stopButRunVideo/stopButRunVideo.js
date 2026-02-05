@@ -9,8 +9,6 @@ var videoStopButDown_BiliBili = new _videoStopButDown({
 });
 
 function Bilibili_Video_Pro () {
-    let isRun = false;
-    if (isRun) return;
     if (!isUserPage("bilibili")) {
         console.log("当前页面不是" + "bilibili");
         return;
@@ -21,7 +19,6 @@ function Bilibili_Video_Pro () {
             let timer = setTimeout(() => {
                 videoStopButDown_BiliBili.StopButDownTask("video.TouchGestureForbidScroll");
                 clearTimeout(timer);
-                isRun = true;
             }, 1000);
         }
     });
@@ -38,8 +35,6 @@ var videoStopButDown_Mmkv = new _videoStopButDown({
 });
 
 function Mmkv_Video_Pro () {
-    let isRun = false;
-    if (isRun) return;
     if (!isUserPage("mmkv")) {
         console.log("当前页面不是" + "mmkv");
         return;
@@ -50,7 +45,6 @@ function Mmkv_Video_Pro () {
             let timer = setTimeout(() => {
                 videoStopButDown_Mmkv.StopButDownTask(".dplayer-video.dplayer-video-current");
                 clearTimeout(timer);
-                isRun = true;
             }, 1000);
         }
     });
@@ -67,8 +61,6 @@ var videoStopButDown_2rk = new _videoStopButDown({
 });
 
 function TwoRK_Video_Pro () {
-    let isRun = false;
-    if (isRun) return;
     if (!isUserPage("2rk")) {
         console.log("当前页面不是" + "2rk");
         return;
@@ -79,7 +71,6 @@ function TwoRK_Video_Pro () {
             let timer = setTimeout(() => {
                 videoStopButDown_2rk.StopButDownTask('video[style="outline:0"]');
                 clearTimeout(timer);
-                isRun = true;
             }, 1000);
         }
     });

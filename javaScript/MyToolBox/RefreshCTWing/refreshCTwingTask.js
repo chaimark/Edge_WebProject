@@ -1,4 +1,3 @@
-// 检查当前页面是否是 ctwing
 function CTwingTask () {
     if (isUserPage("ctwing")) {
         startAutoRefresh(60);

@@ -31,3 +31,23 @@ if (elementvideoRunButton) {
         });
     });
 }
+
+// 发送消息到 autoPayTask
+const elementTimePayButton = document.getElementById('TimePay');
+if (elementTimePayButton) {
+    // 为按钮添加 click 事件监听器
+    elementTimePayButton.addEventListener("click", function () {
+        chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+            console.log("send ok");
+            chrome.tabs.sendMessage(
+                tabs[0].id, // 注意：tabs 是数组，要取第一个元素
+                {action: 'runTaoBaoTimePayScript'},
+                {}, // 可选的 options 参数（可以留空）
+                function (response) {
+                    console.log('收到响应:', response);
+                }
+            );
+        });
+    });
+}
+
