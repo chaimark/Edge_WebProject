@@ -33,19 +33,25 @@ timeout /t 10 /nobreak >nul
 echo 请登录 wegame
 
 REM ============================================================
+set MaxLen=100
+set NowLen=0
+set NextLen=0
 
 :checkDeltaForceClient_Start
-set /a Max_SecRun=90
+cls
+set /a Max_SecRun=60
 set /a Now_SecRun=0
 REM 等待 DeltaForceClient-Win64-Sh 启动
 :check_Run
 tasklist | findstr /i "DeltaForceClient-Win64-Sh" >nul
 if errorlevel 1 (
     echo No2-等待游戏启动中，请勿关闭...
-    timeout /t 1 /nobreak >nul
+    timeout /t 2 /nobreak >nul
     goto checkDeltaForceClient_Start
 ) else (
     REM DeltaForceClient已启动，开始计时监控
+    set /a NextLen=NextLen+1
+    call :showProcess
     goto monitor_Run
 )
 :monitor_Run
@@ -81,3 +87,21 @@ if errorlevel 1 (
 TITLE 降低 ACE 优先级
 powershell.exe -ExecutionPolicy Bypass -File "%CD%\ACE_Low.ps1"
 exit
+
+REM 进度条
+
+:showProcess
+set NeedLen=0
+if %NextLen% leq %MaxLen% (
+    set /a NeedLen=%NextLen%-%NowLen%
+) else (
+    set /a NeedLen=%MaxLen%-%NowLen%
+)
+for /L %%i in (1 1 %NeedLen%) do set /p a=■<nul&timeout /t 1 > nul
+set /a NowLen=%NowLen%+%NeedLen%
+if %NowLen%==%MaxLen% (
+    echo.
+    set NowLen=0
+)
+exit /b 0
+
