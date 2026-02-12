@@ -39,7 +39,7 @@ set NextLen=0
 
 :checkDeltaForceClient_Start
 cls
-set /a Max_SecRun=60
+set /a Max_SecRun=40
 set /a Now_SecRun=0
 REM µÈ´ý DeltaForceClient-Win64-Sh Æô¶¯
 :check_Run
