@@ -1,0 +1,488 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AR	mytool/C_MyLib/Makefile	/^AR = $(CROSS_COMPILE)ar$/;"	m
+ARR_SIZE	mytool/C_MyLib/StrLib.h	12;"	d
+ASCIIToHEX2	mytool/C_MyLib/NumberBaseLib.c	/^int ASCIIToHEX2(char * asc, int asc_len, char * hex, int hex_len) {$/;"	f
+AT24CXXLoader_Init	mytool/C_MyLib/AT24CXXDataLoader.c	/^void AT24CXXLoader_Init(void) {$/;"	f
+AT24CXX_MANAGER_S	mytool/C_MyLib/AT24CXXDataLoader.h	/^typedef struct AT24CXX_MANAGER_S {$/;"	s
+AT24CXX_MANAGER_T	mytool/C_MyLib/AT24CXXDataLoader.h	/^} AT24CXX_MANAGER_T;$/;"	t	typeref:struct:AT24CXX_MANAGER_S
+AT24CXX_Manager_NET	mytool/C_MyLib/AT24CXXDataLoader.c	/^AT24CXX_MANAGER_T AT24CXX_Manager_NET;$/;"	v
+AT24CXX_Manager_NET	mytool/C_MyLib/PublicLib_No_One.h	34;"	d
+AT24XXXDATALOADER_H	mytool/C_MyLib/AT24CXXDataLoader.h	2;"	d
+ATCMD_MAXNUMBER	mytool/C_MyLib/PublicLib_No_One.h	33;"	d
+ATDebug	mytool/C_MyLib/MIN_SetTime.h	/^    ATDebug,$/;"	e	enum:_MINTaskName
+AddCsToJsonAndPushJsonStr	mytool/C_MyLib/JsonCheckFun.c	/^void AddCsToJsonAndPushJsonStr(JsonObject InputJsonStrObj) {$/;"	f
+AddJsonItemData	mytool/C_MyLib/JsonSetLib.c	/^void AddJsonItemData(strnew JsonStringSpace, const char * FromStr, ...) {$/;"	f
+Arr_get	mytool/C_MyLib/JsonDataAnalyzeLib.c	/^void Arr_get(struct _JsonArray This, strnew OutStr, int ItemNum) {$/;"	f
+Arr_getArray	mytool/C_MyLib/JsonDataAnalyzeLib.c	/^void Arr_getArray(struct _JsonArray This, strnew OutStr, int ItemNum) {$/;"	f
+Arr_isJsonNull	mytool/C_MyLib/JsonDataAnalyzeLib.c	/^signed char Arr_isJsonNull(struct _JsonArray This) {$/;"	f
+Arr_sizeItemNum	mytool/C_MyLib/JsonDataAnalyzeLib.c	/^int Arr_sizeItemNum(struct _JsonArray This) {$/;"	f
+AsciiToHex	mytool/C_MyLib/NumberBaseLib.h	66;"	d
+BCD_To_String	mytool/C_MyLib/PublicLib_No_One.c	/^void BCD_To_String(strnew str, strnew bcd) {$/;"	f
+BSTIM_USER_SET_TASK	mytool/C_MyLib/SetTime.h	/^}BSTIM_USER_SET_TASK;$/;"	t	typeref:struct:_BSTIM_USER_SET_TASK
+BaiduTask	javaScript/MyToolBox/RefreshBaidu/RefreshBaiduTask.js	/^function BaiduTask () {$/;"	f
+Bilibili_Video_Pro	javaScript/MyToolBox/stopButRunVideo/stopButRunVideo.js	/^function Bilibili_Video_Pro () {$/;"	f
+BuffToFloatOrDouble	mytool/C_MyLib/NumberBaseLib.c	/^double BuffToFloatOrDouble(strnew OutBuff, bool IsDouble) {$/;"	f
+CC	mytool/C_MyLib/Makefile	/^CC = $(CROSS_COMPILE)gcc$/;"	m
+CC	mytool/build.cmd	/^set CC=gcc$/;"	v
+CFLAGS	mytool/build.cmd	/^set CFLAGS=-O0 -Wall$/;"	v
+CHECK_CRC_H	mytool/C_MyLib/Check_CRC.h	2;"	d
+CHECK_XTHF_OR_XTLF_H	mytool/C_MyLib/Check_XTHF_Or_XTLF.h	2;"	d
+CMD_ChooseFun	mytool/main_.c	/^void        CMD_ChooseFun(strnew InputBuff, bool UserFlag) {$/;"	f
+CRC_POLY_16	mytool/C_MyLib/Check_CRC.h	10;"	d
+CRC_START_MODBUS	mytool/C_MyLib/Check_CRC.h	11;"	d
+CTwingTask	javaScript/MyToolBox/RefreshCTWing/refreshCTwingTask.js	/^function CTwingTask () {$/;"	f
+CheckPWMOfClock	mytool/C_MyLib/MIN_SetTime.h	/^    CheckPWMOfClock,$/;"	e	enum:_MINTaskName
+Check_XTHF_Or_XTLF	mytool/C_MyLib/Check_XTHF_Or_XTLF.h	/^} Check_XTHF_Or_XTLF;$/;"	t	typeref:struct:_Check_XTHF_Or_XTLF
+CloseTask	mytool/C_MyLib/MIN_SetTime.h	/^    void (*CloseTask)(int TaskAddr);$/;"	m	struct:_USER_MIN_SET_TASK
+CloseTask	mytool/C_MyLib/MIN_SetTime.h	/^    void (*CloseTask)(int TaskAddr);$/;"	m	struct:_USER_Min_10_SET_TASK
+CloseTask	mytool/C_MyLib/MIN_SetTime.h	/^    void (*CloseTask)(int TaskAddr);$/;"	m	struct:_USER_Min_15_SET_TASK
+CloseTask	mytool/C_MyLib/RTC_SetTime.h	/^    void (*CloseTask)(int TaskAddr);$/;"	m	struct:_USER_SET_TASK
+CloseTask	mytool/C_MyLib/SetTime.h	/^    void (*CloseTask)(int TaskAddr);$/;"	m	struct:_BSTIM_USER_SET_TASK
+CloseTask	mytool/C_MyLib/SetTime.h	/^    void (*CloseTask)(int TaskAddr);$/;"	m	struct:_LPTIM_USER_SET_TASK
+ColorDisPlayOfMainDev	mytool/C_MyLib/ColorShowTask.h	/^} ColorDisPlayOfMainDev;$/;"	t	typeref:struct:_ColorDisPlayOfMainDev
+ColorShowData	mytool/C_MyLib/ColorShowTask.c	/^ColorDisPlayOfMainDev ColorShowData = {$/;"	v
+ComputeNeedPage	mytool/C_MyLib/UpData.c	/^int ComputeNeedPage(int PackNum, int PackLen) {$/;"	f
+Config_Init_XTHF_And_XTLF	mytool/C_MyLib/Check_XTHF_Or_XTLF.c	/^void Config_Init_XTHF_And_XTLF(void) {$/;"	f
+ConfigureSerialPort	mytool/main_.c	/^void ConfigureSerialPort() {$/;"	f
+CountMaxNum	mytool/C_MyLib/MIN_SetTime.h	/^        uint64_t CountMaxNum;$/;"	m	struct:_USER_MIN_SET_TASK::__anon6
+CountMaxNum	mytool/C_MyLib/MIN_SetTime.h	/^        uint64_t CountMaxNum;$/;"	m	struct:_USER_Min_10_SET_TASK::__anon7
+CountMaxNum	mytool/C_MyLib/MIN_SetTime.h	/^        uint64_t CountMaxNum;$/;"	m	struct:_USER_Min_15_SET_TASK::__anon8
+CountMaxNum	mytool/C_MyLib/RTC_SetTime.h	/^        uint64_t CountMaxNum;$/;"	m	struct:_USER_SET_TASK::__anon10
+CountMaxNum	mytool/C_MyLib/SetTime.h	/^        uint64_t CountMaxNum;$/;"	m	struct:_BSTIM_USER_SET_TASK::__anon11
+CountMaxNum	mytool/C_MyLib/SetTime.h	/^        uint64_t CountMaxNum;$/;"	m	struct:_LPTIM_USER_SET_TASK::__anon12
+CountNum	mytool/C_MyLib/MIN_SetTime.h	/^        uint64_t CountNum;$/;"	m	struct:_USER_MIN_SET_TASK::__anon6
+CountNum	mytool/C_MyLib/MIN_SetTime.h	/^        uint64_t CountNum;$/;"	m	struct:_USER_Min_10_SET_TASK::__anon7
+CountNum	mytool/C_MyLib/MIN_SetTime.h	/^        uint64_t CountNum;$/;"	m	struct:_USER_Min_15_SET_TASK::__anon8
+CountNum	mytool/C_MyLib/RTC_SetTime.h	/^        uint64_t CountNum;$/;"	m	struct:_USER_SET_TASK::__anon10
+CountNum	mytool/C_MyLib/SetTime.h	/^        uint64_t CountNum;$/;"	m	struct:_BSTIM_USER_SET_TASK::__anon11
+CountNum	mytool/C_MyLib/SetTime.h	/^        uint64_t CountNum;$/;"	m	struct:_LPTIM_USER_SET_TASK::__anon12
+CountSetTimeTask	mytool/C_MyLib/SetTime.c	/^void CountSetTimeTask(void) {$/;"	f
+DaysNumberOfCCLK	mytool/C_MyLib/AT24CXXDataLoader.h	/^    char DaysNumberOfCCLK;      \/\/ 间隔校时的天数$/;"	m	struct:AT24CXX_MANAGER_S
+DisplayHelp	mytool/main_.c	/^void DisplayHelp(strnew CmdName, strnew CmdVar) {$/;"	f
+DoubleOrFloatToBuff	mytool/C_MyLib/NumberBaseLib.c	/^void DoubleOrFloatToBuff(strnew OutBuff, double Number, bool IsDouble) {$/;"	f
+ENABLE_VIRTUAL_TERMINAL_PROCESSING	mytool/main.c	8;"	d	file:
+EnableVTMode	mytool/main.c	/^void EnableVTMode() {$/;"	f
+FL_DelayUs	mytool/C_MyLib/PublicLib_No_One.c	/^void FL_DelayUs(uint32_t nus) {$/;"	f
+FL_RTC_InitTypeDef	mytool/C_MyLib/AT24CXXDataLoader.h	/^} FL_RTC_InitTypeDef;$/;"	t	typeref:struct:__anon1
+FlowSpeed	mytool/C_MyLib/ColorShowTask.h	/^        double FlowSpeed; \/\/ 流速$/;"	m	struct:_ColorDisPlayOfMainDev::_MinData
+GET_TYPE	mytool/C_MyLib/StrLib.h	89;"	d
+GET_TYPE_MACRO	mytool/C_MyLib/StrLib.h	111;"	d
+Get_Module_Data	mytool/C_MyLib/AT24CXXDataLoader.h	/^    } Get_Module_Data;$/;"	m	struct:AT24CXX_MANAGER_S	typeref:struct:AT24CXX_MANAGER_S::__anon4
+HEX2ToASCII	mytool/C_MyLib/NumberBaseLib.c	/^int HEX2ToASCII(char * hex, int hex_len, char * asc, int asc_len) {$/;"	f
+HFDET_IRQHandler	mytool/C_MyLib/Check_XTHF_Or_XTLF.c	/^void HFDET_IRQHandler(void) {$/;"	f
+HomePageRefresh	mytool/C_MyLib/RTC_SetTime.h	/^    HomePageRefresh,    \/\/ 用于判断什么时候开启主页面刷新功能$/;"	e	enum:_RTCTaskName
+HourData	mytool/C_MyLib/ColorShowTask.h	/^    } HourData;$/;"	m	struct:_ColorDisPlayOfMainDev	typeref:struct:_ColorDisPlayOfMainDev::_HourData
+HourTaskOfColorShowTime	mytool/C_MyLib/ColorShowTask.c	5;"	d	file:
+HourToMin	mytool/C_MyLib/MIN_SetTime.h	8;"	d
+HourToMin	mytool/C_MyLib/RTC_SetTime.h	9;"	d
+HourToMin_10	mytool/C_MyLib/MIN_SetTime.h	14;"	d
+HourToMin_15	mytool/C_MyLib/MIN_SetTime.h	12;"	d
+INITGUID	mytool/main_.c	1;"	d	file:
+IPstrToHexArray	mytool/C_MyLib/PublicLib_No_One.c	/^void IPstrToHexArray(strnew IpHex, const char * Ipstr) { \/\/IP字符串转16进制$/;"	f
+ISBootLoader	mytool/C_MyLib/UpData.h	4;"	d
+IWDTClS	mytool/C_MyLib/RTC_SetTime.h	/^    IWDTClS,$/;"	e	enum:_RTCTaskName
+InWaterTemp	mytool/C_MyLib/ColorShowTask.h	/^        double InWaterTemp;       \/\/ 进水温度$/;"	m	struct:_ColorDisPlayOfMainDev::_HourData
+IncludeDelayMs	mytool/C_MyLib/PublicLib_No_One.h	31;"	d
+InitSetTimeTask	mytool/C_MyLib/MIN_SetTime.h	/^    void (*InitSetTimeTask)(int TaskAddr, uint64_t SetCountMaxNum, void (*TaskFunc)(void));$/;"	m	struct:_USER_MIN_SET_TASK
+InitSetTimeTask	mytool/C_MyLib/MIN_SetTime.h	/^    void (*InitSetTimeTask)(int TaskAddr, uint64_t SetCountMaxNum, void (*TaskFunc)(void));$/;"	m	struct:_USER_Min_10_SET_TASK
+InitSetTimeTask	mytool/C_MyLib/MIN_SetTime.h	/^    void (*InitSetTimeTask)(int TaskAddr, uint64_t SetCountMaxNum, void (*TaskFunc)(void));$/;"	m	struct:_USER_Min_15_SET_TASK
+InitSetTimeTask	mytool/C_MyLib/RTC_SetTime.h	/^    void (*InitSetTimeTask)(int TaskAddr, uint64_t SetCountMaxNum, void (*TaskFunc)(void));$/;"	m	struct:_USER_SET_TASK
+InitSetTimeTask	mytool/C_MyLib/SetTime.h	/^    void (*InitSetTimeTask)(int TaskAddr, uint64_t SetMax10MsNum, void (*TaskFunc)(void));$/;"	m	struct:_BSTIM_USER_SET_TASK
+InteractiveMode	mytool/main_.c	/^void InteractiveMode() {$/;"	f
+IsStartHeat	mytool/C_MyLib/ColorShowTask.h	/^    bool IsStartHeat;$/;"	m	struct:_ColorDisPlayOfMainDev
+ItemNum	mytool/C_MyLib/JsonDataAnalyzeLib.h	/^    int ItemNum;$/;"	m	struct:_JsonArray
+JsonArray	mytool/C_MyLib/JsonDataAnalyzeLib.h	/^} JsonArray;$/;"	t	typeref:struct:_JsonArray
+JsonCheckFun	mytool/C_MyLib/JsonCheckFun.h	2;"	d
+JsonObject	mytool/C_MyLib/JsonDataAnalyzeLib.h	/^} JsonObject;$/;"	t	typeref:struct:_JsonObject
+JsonString	mytool/C_MyLib/JsonDataAnalyzeLib.h	/^    strnew JsonString;$/;"	m	struct:_JsonArray
+JsonString	mytool/C_MyLib/JsonDataAnalyzeLib.h	/^    strnew JsonString;$/;"	m	struct:_JsonObject
+Kd	mytool/C_MyLib/PID_Mode.h	/^    double Kd; \/\/ 微分系数$/;"	m	struct:__anon9
+Ki	mytool/C_MyLib/PID_Mode.h	/^    double Ki; \/\/ 积分系数$/;"	m	struct:__anon9
+Kp	mytool/C_MyLib/PID_Mode.h	/^    double Kp; \/\/ 比例系数$/;"	m	struct:__anon9
+LFDET_IRQHandler	mytool/C_MyLib/Check_XTHF_Or_XTLF.c	/^void LFDET_IRQHandler(void) {$/;"	f
+LPCountSetTimeTask	mytool/C_MyLib/SetTime.c	/^void LPCountSetTimeTask(void) {$/;"	f
+LPInitSetTimeTask	mytool/C_MyLib/SetTime.h	/^    void (*LPInitSetTimeTask)(int TaskAddr, uint64_t SetMax250MsNum, void (*TaskFunc)(void));$/;"	m	struct:_LPTIM_USER_SET_TASK
+LPTIM_USER_SET_TASK	mytool/C_MyLib/SetTime.h	/^}LPTIM_USER_SET_TASK;$/;"	t	typeref:struct:_LPTIM_USER_SET_TASK
+LPTimeTaskName	mytool/C_MyLib/SetTime.h	/^}LPTimeTaskName;$/;"	t	typeref:enum:_LPTimeTaskName
+ListAvailablePorts	mytool/main_.c	/^void ListAvailablePorts() {$/;"	f
+ListPorts	mytool/main.c	/^void ListPorts() {$/;"	f
+LowAce	youtube/LowPower_AEC.cmd	/^:LowAce$/;"	l
+LowAce2	youtube/LowPower_AEC.cmd	/^:LowAce2$/;"	l
+LowPwerDebug	mytool/C_MyLib/RTC_SetTime.h	/^    LowPwerDebug,$/;"	e	enum:_RTCTaskName
+MAX_STACK_SIZE	mytool/C_MyLib/JsonDataAnalyzeLib.c	8;"	d	file:
+MINTaskName	mytool/C_MyLib/MIN_SetTime.h	/^}MINTaskName;$/;"	t	typeref:enum:_MINTaskName
+MINTimeTaskMAX	mytool/C_MyLib/MIN_SetTime.h	36;"	d
+MINTimeTaskMAX	mytool/C_MyLib/MIN_SetTime.h	38;"	d
+MIN_TASK	mytool/C_MyLib/MIN_SetTime.c	/^USER_MIN_SET_TASK MIN_TASK = {$/;"	v
+MaxLen	mytool/C_MyLib/StrLib.h	/^    int MaxLen;$/;"	m	struct:New_Arr
+MeterID	mytool/C_MyLib/AT24CXXDataLoader.h	/^    char MeterID[4];            \/\/ 表号$/;"	m	struct:AT24CXX_MANAGER_S
+MinCountRTCTask	mytool/C_MyLib/MIN_SetTime.c	/^void MinCountRTCTask(void) {$/;"	f
+MinData	mytool/C_MyLib/ColorShowTask.h	/^    } MinData;$/;"	m	struct:_ColorDisPlayOfMainDev	typeref:struct:_ColorDisPlayOfMainDev::_MinData
+MinTaskOfColorShowTime	mytool/C_MyLib/ColorShowTask.c	6;"	d	file:
+MinToSec	mytool/C_MyLib/MIN_SetTime.h	10;"	d
+MinToSec	mytool/C_MyLib/RTC_SetTime.h	11;"	d
+Min_10_CountRTCTask	mytool/C_MyLib/MIN_SetTime.c	/^void Min_10_CountRTCTask(void) {$/;"	f
+Min_10_TASK	mytool/C_MyLib/MIN_SetTime.c	/^USER_Min_10_SET_TASK Min_10_TASK = {$/;"	v
+Min_10_TaskName	mytool/C_MyLib/MIN_SetTime.h	/^}Min_10_TaskName;$/;"	t	typeref:enum:_Min_10_TaskName
+Min_15_CountRTCTask	mytool/C_MyLib/MIN_SetTime.c	/^void Min_15_CountRTCTask(void) {$/;"	f
+Min_15_TASK	mytool/C_MyLib/MIN_SetTime.c	/^USER_Min_15_SET_TASK Min_15_TASK = {$/;"	v
+Min_15_TaskName	mytool/C_MyLib/MIN_SetTime.h	/^}Min_15_TaskName;$/;"	t	typeref:enum:_Min_15_TaskName
+Mmkv_Video_Pro	javaScript/MyToolBox/stopButRunVideo/stopButRunVideo.js	/^function Mmkv_Video_Pro () {$/;"	f
+MoveDataOnBuff	mytool/C_MyLib/StrLib.c	/^bool MoveDataOnBuff(strnew IntptBuff, int ShiftLen, bool IsLeft) {$/;"	f
+MyCode	windows_tool/gotoEditCode.cmd	/^set MyCode="C:\\Users\\choulei\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"$/;"	v
+MyPrintf	mytool/C_MyLib/UpData.h	15;"	d
+NET_Remote_Port	mytool/C_MyLib/AT24CXXDataLoader.h	/^    uint16_t NET_Remote_Port;   \/\/ 目标端口$/;"	m	struct:AT24CXX_MANAGER_S
+NET_Remote_Url	mytool/C_MyLib/AT24CXXDataLoader.h	/^    char NET_Remote_Url[42];    \/\/ 目标地址$/;"	m	struct:AT24CXX_MANAGER_S
+NEW_NAME	mytool/C_MyLib/StrLib.h	47;"	d
+NUMBERBASELIC_H	mytool/C_MyLib/NumberBaseLib.h	10;"	d
+Name	mytool/C_MyLib/StrLib.h	/^    } Name;$/;"	m	struct:New_Arr	typeref:union:New_Arr::_newclass
+NetCheckENableFlag	mytool/C_MyLib/AT24CXXDataLoader.h	/^    bool NetCheckENableFlag;    \/\/ 网络检测使能标志$/;"	m	struct:AT24CXX_MANAGER_S
+New_Arr	mytool/C_MyLib/StrLib.h	/^typedef struct New_Arr {$/;"	s
+New_Str_Obj	mytool/C_MyLib/StrLib.c	/^strnew New_Str_Obj(void * Master, int SizeNum, int SizeType) {$/;"	f
+NoPwrOpenValve	mytool/C_MyLib/MIN_SetTime.h	/^    NoPwrOpenValve,$/;"	e	enum:_MINTaskName
+NowLen_Page8Buff	mytool/C_MyLib/UpData.h	/^    int NowLen_Page8Buff;$/;"	m	struct:_UpdataDataTemp
+NowPackIsGotoNextPage	mytool/C_MyLib/UpData.c	/^int NowPackIsGotoNextPage(int NowPageNum, int NowPackNum) {$/;"	f
+NowPackNum	mytool/C_MyLib/UpData.h	/^    int NowPackNum; \/\/ 接收到的包序号$/;"	m	struct:_UpdataDataTemp
+NowPageNum	mytool/C_MyLib/UpData.h	/^    int NowPageNum; \/\/ 当前包所在的页号$/;"	m	struct:_UpdataDataTemp
+NumberOfTimeTask	mytool/C_MyLib/MIN_SetTime.h	/^    int NumberOfTimeTask;$/;"	m	struct:_USER_MIN_SET_TASK
+NumberOfTimeTask	mytool/C_MyLib/MIN_SetTime.h	/^    int NumberOfTimeTask;$/;"	m	struct:_USER_Min_10_SET_TASK
+NumberOfTimeTask	mytool/C_MyLib/MIN_SetTime.h	/^    int NumberOfTimeTask;$/;"	m	struct:_USER_Min_15_SET_TASK
+NumberOfTimeTask	mytool/C_MyLib/RTC_SetTime.h	/^    int NumberOfTimeTask;$/;"	m	struct:_USER_SET_TASK
+NumberOfTimeTask	mytool/C_MyLib/SetTime.h	/^    int NumberOfTimeTask;$/;"	m	struct:_BSTIM_USER_SET_TASK
+NumberOfTimeTask	mytool/C_MyLib/SetTime.h	/^    int NumberOfTimeTask;$/;"	m	struct:_LPTIM_USER_SET_TASK
+OBJS	mytool/build.cmd	/^    set OBJS=!OBJS! ".\/outflie\/%%~nf.o"$/;"	v
+OBJS	mytool/build.cmd	/^set OBJS=!OBJS! ".\/outflie\/main.o"$/;"	v
+OBJS	mytool/build.cmd	/^set OBJS=$/;"	v
+OUTPUT	mytool/build.cmd	/^set OUTPUT=main.exe$/;"	v
+Obj_getArray	mytool/C_MyLib/JsonDataAnalyzeLib.c	/^struct _JsonArray Obj_getArray(struct _JsonObject This, char Key[], strnew OutStr) {$/;"	f
+Obj_getBool	mytool/C_MyLib/JsonDataAnalyzeLib.c	/^bool Obj_getBool(struct _JsonObject This, char Key[]) {$/;"	f
+Obj_getDouble	mytool/C_MyLib/JsonDataAnalyzeLib.c	/^double Obj_getDouble(struct _JsonObject This, char Key[]) {$/;"	f
+Obj_getInt	mytool/C_MyLib/JsonDataAnalyzeLib.c	/^int Obj_getInt(struct _JsonObject This, char Key[]) {$/;"	f
+Obj_getObject	mytool/C_MyLib/JsonDataAnalyzeLib.c	/^struct _JsonObject Obj_getObject(struct _JsonObject This, char Key[], strnew OutStr) {$/;"	f
+Obj_getString	mytool/C_MyLib/JsonDataAnalyzeLib.c	/^void Obj_getString(struct _JsonObject This, char Key[], strnew OutStr) {$/;"	f
+Obj_isJsonNull	mytool/C_MyLib/JsonDataAnalyzeLib.c	/^signed char Obj_isJsonNull(struct _JsonObject This, char Key[]) {$/;"	f
+Obj_sizeStr	mytool/C_MyLib/JsonDataAnalyzeLib.c	/^int Obj_sizeStr(struct _JsonObject This) {$/;"	f
+OneDayMaxSendTime	mytool/C_MyLib/AT24CXXDataLoader.h	/^            uint8_t  OneDayMaxSendTime;     \/\/ 某模式下的最大发送次数$/;"	m	struct:AT24CXX_MANAGER_S::__anon2::__anon3
+OpenSerialPort	mytool/main_.c	/^BOOL OpenSerialPort() {$/;"	f
+OutWaterTemp	mytool/C_MyLib/ColorShowTask.h	/^        double OutWaterTemp;      \/\/ 回水温度$/;"	m	struct:_ColorDisPlayOfMainDev::_HourData
+PAGE_SIZE	mytool/C_MyLib/UpData.h	24;"	d
+PAGE_SIZE	mytool/C_MyLib/UpData.h	26;"	d
+PIDController	mytool/C_MyLib/PID_Mode.h	/^} PIDController;$/;"	t	typeref:struct:__anon9
+PackLen	mytool/C_MyLib/UpData.h	/^    int PackLen;$/;"	m	struct:_UpdataDataTemp
+Page8Buff	mytool/C_MyLib/UpData.h	/^    uint8_t Page8Buff[PAGE_SIZE];$/;"	m	struct:_UpdataDataTemp
+RTCTaskName	mytool/C_MyLib/RTC_SetTime.h	/^}RTCTaskName;$/;"	t	typeref:enum:_RTCTaskName
+RTCTimeTaskMAX	mytool/C_MyLib/RTC_SetTime.h	29;"	d
+RTCTimeTaskMAX	mytool/C_MyLib/RTC_SetTime.h	31;"	d
+RTC_TASK	mytool/C_MyLib/RTC_SetTime.c	/^USER_SET_TASK RTC_TASK = {$/;"	v
+ReadSerialThread	mytool/main_.c	/^DWORD WINAPI ReadSerialThread(LPVOID lpParam) {$/;"	f
+ReadThread	mytool/main.c	/^void ReadThread(void* param) {$/;"	f
+RecTimeLPUART0	mytool/C_MyLib/SetTime.h	/^    RecTimeLPUART0,     \/\/ 用于判断 LPuart0 串口是否接收结束$/;"	e	enum:_TimeTaskName
+RecTimeLPUART1	mytool/C_MyLib/SetTime.h	/^    RecTimeLPUART1,     \/\/ 用于判断 LPuart1 串口是否接收结束$/;"	e	enum:_TimeTaskName
+STRLIB_H	mytool/C_MyLib/StrLib.h	3;"	d
+SaveUpdataToPage8Buff	mytool/C_MyLib/UpData.c	/^int SaveUpdataToPage8Buff(int NowPageNum, int NowPackNum, strnew NowCodeHex) {$/;"	f
+Save_Working_Mode	mytool/C_MyLib/AT24CXXDataLoader.h	/^    char Save_Working_Mode;     \/\/ 工作模式（权限）$/;"	m	struct:AT24CXX_MANAGER_S
+SecTo10Ms	mytool/C_MyLib/SetTime.h	9;"	d
+SecTo250Ms	mytool/C_MyLib/SetTime.h	44;"	d
+SecTo250Ms	mytool/C_MyLib/SetTime.h	8;"	d
+SecTo5Ms	mytool/C_MyLib/SetTime.h	10;"	d
+SecondCountRTCTask	mytool/C_MyLib/RTC_SetTime.c	/^void SecondCountRTCTask(void) {$/;"	f
+SendFlagMode	mytool/C_MyLib/AT24CXXDataLoader.h	/^        }SendFlagMode[4];                   \/\/ 当月发送标记模式 (默认：0:防锁模式, 1:频发模式, 2:保底模式)$/;"	m	struct:AT24CXX_MANAGER_S::__anon2	typeref:struct:AT24CXX_MANAGER_S::__anon2::__anon3
+SendInterval	mytool/C_MyLib/AT24CXXDataLoader.h	/^            uint8_t  SendInterval;          \/\/ 某模式下的间隔周期 (单位是 day)$/;"	m	struct:AT24CXX_MANAGER_S::__anon2::__anon3
+SendIntervalDay	mytool/C_MyLib/AT24CXXDataLoader.h	/^        uint32_t SendIntervalDay;           \/\/ 当天发送的周期 (单位是 s) 1440 分钟 = 1天 = 86400 秒$/;"	m	struct:AT24CXX_MANAGER_S::__anon2
+SendManageObj	mytool/C_MyLib/AT24CXXDataLoader.h	/^    } SendManageObj;$/;"	m	struct:AT24CXX_MANAGER_S	typeref:struct:AT24CXX_MANAGER_S::__anon2
+SendStartHour	mytool/C_MyLib/AT24CXXDataLoader.h	/^        uint8_t  SendStartHour;             \/\/ 当天发送的起始点$/;"	m	struct:AT24CXX_MANAGER_S::__anon2
+SetLPTime	mytool/C_MyLib/SetTime.c	/^LPTIM_USER_SET_TASK SetLPTime = {$/;"	v
+SetTime	mytool/C_MyLib/SetTime.c	/^BSTIM_USER_SET_TASK SetTime = {$/;"	v
+Sign	mytool/C_MyLib/UpData.h	/^    char Sign;$/;"	m	struct:_UpdataDataTemp
+Sing	mytool/C_MyLib/AT24CXXDataLoader.h	/^    char Sing;                  \/\/ 初始化标志$/;"	m	struct:AT24CXX_MANAGER_S
+SizeType	mytool/C_MyLib/StrLib.h	/^    int SizeType;$/;"	m	struct:New_Arr
+SpecialCmdDone	mytool/main_.c	/^void SpecialCmdDone(strnew InputBuff) {$/;"	f
+Stack	mytool/C_MyLib/JsonDataAnalyzeLib.c	/^} Stack;$/;"	t	typeref:struct:__anon5	file:
+StartDay	mytool/C_MyLib/AT24CXXDataLoader.h	/^            uint16_t StartDay;              \/\/ 某模式起始日（如：第150日; 1月1日为第1日）$/;"	m	struct:AT24CXX_MANAGER_S::__anon2::__anon3
+StringSlice	mytool/C_MyLib/StrLib.c	/^void StringSlice(strnew OutStr, strnew Mather, int start, int end) {$/;"	f
+SumEnergy	mytool/C_MyLib/ColorShowTask.h	/^        double SumEnergy;         \/\/ 累计耗能$/;"	m	struct:_ColorDisPlayOfMainDev::_HourData
+SumFlow	mytool/C_MyLib/ColorShowTask.h	/^        double SumFlow;           \/\/ 累计耗流$/;"	m	struct:_ColorDisPlayOfMainDev::_HourData
+Task	mytool/C_MyLib/MIN_SetTime.h	/^    } Task[MINTimeTaskMAX];$/;"	m	struct:_USER_MIN_SET_TASK	typeref:struct:_USER_MIN_SET_TASK::__anon6
+Task	mytool/C_MyLib/MIN_SetTime.h	/^    } Task[Min_10_TimeTaskMAX];$/;"	m	struct:_USER_Min_10_SET_TASK	typeref:struct:_USER_Min_10_SET_TASK::__anon7
+Task	mytool/C_MyLib/MIN_SetTime.h	/^    } Task[Min_15_TimeTaskMAX];$/;"	m	struct:_USER_Min_15_SET_TASK	typeref:struct:_USER_Min_15_SET_TASK::__anon8
+Task	mytool/C_MyLib/RTC_SetTime.h	/^    } Task[RTCTimeTaskMAX];$/;"	m	struct:_USER_SET_TASK	typeref:struct:_USER_SET_TASK::__anon10
+Task	mytool/C_MyLib/SetTime.h	/^    } Task[BSTIM_OPEN_AND_TASK_NUM];$/;"	m	struct:_BSTIM_USER_SET_TASK	typeref:struct:_BSTIM_USER_SET_TASK::__anon11
+Task	mytool/C_MyLib/SetTime.h	/^    } Task[LPTIM_OPEN_AND_TASK_NUM];$/;"	m	struct:_LPTIM_USER_SET_TASK	typeref:struct:_LPTIM_USER_SET_TASK::__anon12
+TaskFunc	mytool/C_MyLib/MIN_SetTime.h	/^        void (*TaskFunc)(void);$/;"	m	struct:_USER_MIN_SET_TASK::__anon6
+TaskFunc	mytool/C_MyLib/MIN_SetTime.h	/^        void (*TaskFunc)(void);$/;"	m	struct:_USER_Min_10_SET_TASK::__anon7
+TaskFunc	mytool/C_MyLib/MIN_SetTime.h	/^        void (*TaskFunc)(void);$/;"	m	struct:_USER_Min_15_SET_TASK::__anon8
+TaskFunc	mytool/C_MyLib/RTC_SetTime.h	/^        void (*TaskFunc)(void);$/;"	m	struct:_USER_SET_TASK::__anon10
+TaskFunc	mytool/C_MyLib/SetTime.h	/^        void (*TaskFunc)(void);$/;"	m	struct:_BSTIM_USER_SET_TASK::__anon11
+TaskFunc	mytool/C_MyLib/SetTime.h	/^        void (*TaskFunc)(void);$/;"	m	struct:_LPTIM_USER_SET_TASK::__anon12
+TestArgument	mytool/C_MyLib/MIN_SetTime.h	/^    TestArgument,$/;"	e	enum:_MINTaskName
+This	mytool/C_MyLib/StrLib.h	11;"	d
+TimePay_wait	javaScript/MyToolBox/autoPayTask/TaoBaoTimePayTask.js	/^function TimePay_wait () {$/;"	f
+TimeSpeed	mytool/C_MyLib/PublicLib_No_One.c	/^void TimeSpeed(void) {$/;"	f
+TimeStuClass	mytool/C_MyLib/StrLib.h	/^} TimeStuClass;$/;"	t	typeref:struct:_TimeStuClass
+TimeTaskName	mytool/C_MyLib/SetTime.h	/^} TimeTaskName;$/;"	t	typeref:enum:_TimeTaskName
+TimeTask_Falge	mytool/C_MyLib/MIN_SetTime.h	/^        bool TimeTask_Falge;    \/\/ 当前计时任务是否完成$/;"	m	struct:_USER_MIN_SET_TASK::__anon6
+TimeTask_Falge	mytool/C_MyLib/MIN_SetTime.h	/^        bool TimeTask_Falge;    \/\/ 当前计时任务是否完成$/;"	m	struct:_USER_Min_10_SET_TASK::__anon7
+TimeTask_Falge	mytool/C_MyLib/MIN_SetTime.h	/^        bool TimeTask_Falge;    \/\/ 当前计时任务是否完成$/;"	m	struct:_USER_Min_15_SET_TASK::__anon8
+TimeTask_Falge	mytool/C_MyLib/RTC_SetTime.h	/^        bool TimeTask_Falge;    \/\/ 当前计时任务是否完成$/;"	m	struct:_USER_SET_TASK::__anon10
+TimeTask_Falge	mytool/C_MyLib/SetTime.h	/^        bool TimeTask_Falge;    \/\/ 当前计时任务是否完成$/;"	m	struct:_BSTIM_USER_SET_TASK::__anon11
+TimeTask_Falge	mytool/C_MyLib/SetTime.h	/^        bool TimeTask_Falge;    \/\/ 当前计时任务是否完成$/;"	m	struct:_LPTIM_USER_SET_TASK::__anon12
+Time_Data	mytool/C_MyLib/AT24CXXDataLoader.h	/^    FL_RTC_InitTypeDef Time_Data;$/;"	m	struct:AT24CXX_MANAGER_S
+TimestampToRTCData	mytool/C_MyLib/StrLib.c	/^TimeStuClass TimestampToRTCData(uint32_t timestamp) {$/;"	f
+TwoRK_Video_Pro	javaScript/MyToolBox/stopButRunVideo/stopButRunVideo.js	/^function TwoRK_Video_Pro () {$/;"	f
+Type_T	mytool/C_MyLib/StrLib.h	/^}Type_T;$/;"	t	typeref:struct:_Type_T
+U8_Connect_U8	mytool/C_MyLib/NumberBaseLib.c	/^uint16_t U8_Connect_U8(uint8_t H_Part_Input, uint8_t L_Part_Input) {$/;"	f
+UPDATA_MCU_BASE	mytool/C_MyLib/UpData.h	47;"	d
+UPDATA_MCU_OFFSET	mytool/C_MyLib/UpData.h	48;"	d
+UPDATA_PAGE_BEGIN	mytool/C_MyLib/UpData.h	35;"	d
+UPDATA_PAGE_BEGIN	mytool/C_MyLib/UpData.h	40;"	d
+UPDATA_PAGE_END	mytool/C_MyLib/UpData.h	36;"	d
+UPDATA_PAGE_END	mytool/C_MyLib/UpData.h	41;"	d
+UPDATA_PAGE_SIGN	mytool/C_MyLib/UpData.h	34;"	d
+UPDATA_PAGE_SIGN	mytool/C_MyLib/UpData.h	39;"	d
+UPDATA_SIGN	mytool/C_MyLib/UpData.h	44;"	d
+USER_MIN_SET_TASK	mytool/C_MyLib/MIN_SetTime.h	/^}USER_MIN_SET_TASK;$/;"	t	typeref:struct:_USER_MIN_SET_TASK
+USER_Min_10_SET_TASK	mytool/C_MyLib/MIN_SetTime.h	/^}USER_Min_10_SET_TASK;$/;"	t	typeref:struct:_USER_Min_10_SET_TASK
+USER_Min_15_SET_TASK	mytool/C_MyLib/MIN_SetTime.h	/^}USER_Min_15_SET_TASK;$/;"	t	typeref:struct:_USER_Min_15_SET_TASK
+USER_SET_TASK	mytool/C_MyLib/RTC_SetTime.h	/^}USER_SET_TASK;$/;"	t	typeref:struct:_USER_SET_TASK
+UpData_Receive_Hex	mytool/C_MyLib/UpData.c	/^int UpData_Receive_Hex(JsonObject BinCode) {$/;"	f
+UpdataCsDeart	mytool/C_MyLib/UpData.c	/^uint8_t UpdataCsDeart;  \/\/ 校验差$/;"	v
+UpdataData	mytool/C_MyLib/UpData.c	/^UpdataDataTemp UpdataData = {0};$/;"	v
+UpdataDataTemp	mytool/C_MyLib/UpData.h	/^} UpdataDataTemp;$/;"	t	typeref:struct:_UpdataDataTemp
+UserTask	mytool/C_MyLib/Check_XTHF_Or_XTLF.h	/^    void (*UserTask)(void);$/;"	m	struct:_Check_XTHF_Or_XTLF
+VER	mytool/C_MyLib/AT24CXXDataLoader.h	/^    char VER[4];                \/\/ 版本号$/;"	m	struct:AT24CXX_MANAGER_S
+WGID_String_To_BCD	mytool/C_MyLib/PublicLib_No_One.c	/^void WGID_String_To_BCD(strnew bcd, strnew str) {$/;"	f
+XTClock_CheckTask	mytool/C_MyLib/Check_XTHF_Or_XTLF.c	/^Check_XTHF_Or_XTLF XTClock_CheckTask = {$/;"	v
+XTHF_Config_init	mytool/C_MyLib/Check_XTHF_Or_XTLF.c	/^void XTHF_Config_init(void) {$/;"	f
+XTHF_FAIL	mytool/C_MyLib/Check_XTHF_Or_XTLF.h	9;"	d
+XTLF_Config_Init	mytool/C_MyLib/Check_XTHF_Or_XTLF.c	/^void XTLF_Config_Init(void) {$/;"	f
+XTLF_FAIL	mytool/C_MyLib/Check_XTHF_Or_XTLF.h	8;"	d
+XT_CLOCK_OK	mytool/C_MyLib/Check_XTHF_Or_XTLF.h	7;"	d
+_AT24CXX_Manager_NET	mytool/C_MyLib/AT24CXXDataLoader.c	/^struct AT24CXX_MANAGER_S * _AT24CXX_Manager_NET = NULL;$/;"	v	typeref:struct:AT24CXX_MANAGER_S
+_BSTIM_USER_SET_TASK	mytool/C_MyLib/SetTime.h	/^typedef struct _BSTIM_USER_SET_TASK {$/;"	s
+_Check_XTHF_Or_XTLF	mytool/C_MyLib/Check_XTHF_Or_XTLF.h	/^typedef struct _Check_XTHF_Or_XTLF {$/;"	s
+_ColorDisPlayOfMainDev	mytool/C_MyLib/ColorShowTask.h	/^typedef struct _ColorDisPlayOfMainDev {$/;"	s
+_HourData	mytool/C_MyLib/ColorShowTask.h	/^    struct _HourData {$/;"	s	struct:_ColorDisPlayOfMainDev
+_InitRTCTask	mytool/C_MyLib/RTC_SetTime.c	/^static void _InitRTCTask(int TaskAddr, uint64_t SetCountMaxNum, void (*TaskFunc)(void)) {$/;"	f	file:
+_InitSetTimeTask	mytool/C_MyLib/SetTime.c	/^static void _InitSetTimeTask(int TaskAddr, uint64_t SetMax10MsNum, void (*TaskFunc)(void)) {$/;"	f	file:
+_InitType	mytool/C_MyLib/StrLib.c	/^Type_T _InitType(void * var, const char * type) {$/;"	f
+_JSONSETLIB_H	mytool/C_MyLib/JsonSetLib.h	2;"	d
+_JSON_DATA_ANALYZE_LIB_H	mytool/C_MyLib/JsonDataAnalyzeLib.h	2;"	d
+_JsonArray	mytool/C_MyLib/JsonDataAnalyzeLib.h	/^typedef struct _JsonArray {$/;"	s
+_JsonObject	mytool/C_MyLib/JsonDataAnalyzeLib.h	/^typedef struct _JsonObject {$/;"	s
+_LLong	mytool/C_MyLib/StrLib.h	/^        long long * _LLong;     \/\/ 长长整型指针$/;"	m	union:New_Arr::_newclass
+_LPInitSetTimeTask	mytool/C_MyLib/SetTime.c	/^static void _LPInitSetTimeTask(int TaskAddr, uint64_t SetMax250MsNum, void (*TaskFunc)(void)) {$/;"	f	file:
+_LPSetCloseTask	mytool/C_MyLib/SetTime.c	/^static void _LPSetCloseTask(int TaskAddr) {$/;"	f	file:
+_LPTIM_USER_SET_TASK	mytool/C_MyLib/SetTime.h	/^typedef struct _LPTIM_USER_SET_TASK {$/;"	s
+_LPTimeTaskName	mytool/C_MyLib/SetTime.h	/^typedef enum _LPTimeTaskName {$/;"	g
+_Ldouble	mytool/C_MyLib/StrLib.h	/^        long double * _Ldouble; \/\/ 扩展精度浮点型指针$/;"	m	union:New_Arr::_newclass
+_MINTaskName	mytool/C_MyLib/MIN_SetTime.h	/^typedef enum _MINTaskName {$/;"	g
+_MinData	mytool/C_MyLib/ColorShowTask.h	/^    struct _MinData {$/;"	s	struct:_ColorDisPlayOfMainDev
+_MinInitRTCTask	mytool/C_MyLib/MIN_SetTime.c	/^static void _MinInitRTCTask(int TaskAddr, uint64_t SetMaxCountNum, void (*TaskFunc)(void)) {$/;"	f	file:
+_MinRTCCloseTask	mytool/C_MyLib/MIN_SetTime.c	/^static void _MinRTCCloseTask(int TaskAddr) {$/;"	f	file:
+_Min_10_InitRTCTask	mytool/C_MyLib/MIN_SetTime.c	/^static void _Min_10_InitRTCTask(int TaskAddr, uint64_t SetCountMaxNum, void (*TaskFunc)(void)) {$/;"	f	file:
+_Min_10_RTCCloseTask	mytool/C_MyLib/MIN_SetTime.c	/^static void _Min_10_RTCCloseTask(int TaskAddr) {$/;"	f	file:
+_Min_10_TaskName	mytool/C_MyLib/MIN_SetTime.h	/^typedef enum _Min_10_TaskName {$/;"	g
+_Min_15_InitRTCTask	mytool/C_MyLib/MIN_SetTime.c	/^static void _Min_15_InitRTCTask(int TaskAddr, uint64_t SetCountMaxNum, void (*TaskFunc)(void)) {$/;"	f	file:
+_Min_15_RTCCloseTask	mytool/C_MyLib/MIN_SetTime.c	/^static void _Min_15_RTCCloseTask(int TaskAddr) {$/;"	f	file:
+_Min_15_TaskName	mytool/C_MyLib/MIN_SetTime.h	/^typedef enum _Min_15_TaskName {$/;"	g
+_Module_DEV_CSQ	mytool/C_MyLib/AT24CXXDataLoader.h	/^        char _Module_DEV_CSQ;$/;"	m	struct:AT24CXX_MANAGER_S::__anon4
+_Module_DEV_IMEI	mytool/C_MyLib/AT24CXXDataLoader.h	/^        char _Module_DEV_IMEI[21];$/;"	m	struct:AT24CXX_MANAGER_S::__anon4
+_Module_DEV_RSRP	mytool/C_MyLib/AT24CXXDataLoader.h	/^        char _Module_DEV_RSRP;$/;"	m	struct:AT24CXX_MANAGER_S::__anon4
+_Module_DEV_RSRQ	mytool/C_MyLib/AT24CXXDataLoader.h	/^        char _Module_DEV_RSRQ;$/;"	m	struct:AT24CXX_MANAGER_S::__anon4
+_Module_SIM_BAND	mytool/C_MyLib/AT24CXXDataLoader.h	/^        char _Module_SIM_BAND;$/;"	m	struct:AT24CXX_MANAGER_S::__anon4
+_Module_SIM_ICCID	mytool/C_MyLib/AT24CXXDataLoader.h	/^        char _Module_SIM_ICCID[21];$/;"	m	struct:AT24CXX_MANAGER_S::__anon4
+_Module_SIM_IMSI	mytool/C_MyLib/AT24CXXDataLoader.h	/^        char _Module_SIM_IMSI[21];$/;"	m	struct:AT24CXX_MANAGER_S::__anon4
+_Module_Socket_Num	mytool/C_MyLib/AT24CXXDataLoader.h	/^        char _Module_Socket_Num;$/;"	m	struct:AT24CXX_MANAGER_S::__anon4
+_PID_MODE_H	mytool/C_MyLib/PID_Mode.h	2;"	d
+_RTCCloseTask	mytool/C_MyLib/RTC_SetTime.c	/^static void _RTCCloseTask(int TaskAddr) {$/;"	f	file:
+_RTCTaskName	mytool/C_MyLib/RTC_SetTime.h	/^typedef enum _RTCTaskName {$/;"	g
+_RTCTimeTaskMAX	mytool/C_MyLib/RTC_SetTime.h	26;"	d
+_SetCloseTask	mytool/C_MyLib/SetTime.c	/^static void _SetCloseTask(int TaskAddr) {$/;"	f	file:
+_TimeStuClass	mytool/C_MyLib/StrLib.h	/^typedef struct _TimeStuClass {$/;"	s
+_TimeTaskName	mytool/C_MyLib/SetTime.h	/^typedef enum _TimeTaskName {	\/\/ 发送AT指令时调用什么函数发送, 对应的函数名$/;"	g
+_Type_T	mytool/C_MyLib/StrLib.h	/^typedef struct _Type_T {$/;"	s
+_USER_MIN_SET_TASK	mytool/C_MyLib/MIN_SetTime.h	/^typedef struct _USER_MIN_SET_TASK {$/;"	s
+_USER_Min_10_SET_TASK	mytool/C_MyLib/MIN_SetTime.h	/^typedef struct _USER_Min_10_SET_TASK {$/;"	s
+_USER_Min_15_SET_TASK	mytool/C_MyLib/MIN_SetTime.h	/^typedef struct _USER_Min_15_SET_TASK {$/;"	s
+_USER_SET_TASK	mytool/C_MyLib/RTC_SetTime.h	/^typedef struct _USER_SET_TASK {$/;"	s
+_UpdataDataTemp	mytool/C_MyLib/UpData.h	/^typedef struct _UpdataDataTemp {$/;"	s
+__MIN_SetTime_H	mytool/C_MyLib/MIN_SetTime.h	2;"	d
+__PUBLICLIB_NO_ONE_H	mytool/C_MyLib/PublicLib_No_One.h	2;"	d
+__RTC_SETTIME_H	mytool/C_MyLib/RTC_SetTime.h	2;"	d
+__SETTIME_H	mytool/C_MyLib/SetTime.h	2;"	d
+__UPDATA_H	mytool/C_MyLib/UpData.h	2;"	d
+_char	mytool/C_MyLib/StrLib.h	/^        char * _char;           \/\/ 字符型指针$/;"	m	union:New_Arr::_newclass
+_double	mytool/C_MyLib/StrLib.h	/^        double * _double;       \/\/ 双精度浮点型指针$/;"	m	union:New_Arr::_newclass
+_float	mytool/C_MyLib/StrLib.h	/^        float * _float;         \/\/ 单精度浮点型指针$/;"	m	union:New_Arr::_newclass
+_getKeyName	mytool/C_MyLib/JsonDataAnalyzeLib.c	/^void _getKeyName(strnew SonStr, char Key[]) {$/;"	f
+_getStrlen	mytool/C_MyLib/StrLib.c	/^int _getStrlen(struct New_Arr This) {$/;"	f
+_int	mytool/C_MyLib/StrLib.h	/^        int * _int;             \/\/ 整型指针$/;"	m	union:New_Arr::_newclass
+_long	mytool/C_MyLib/StrLib.h	/^        long * _long;           \/\/ 长整型指针$/;"	m	union:New_Arr::_newclass
+_newclass	mytool/C_MyLib/StrLib.h	/^    union _newclass {$/;"	u	struct:New_Arr
+_short	mytool/C_MyLib/StrLib.h	/^        short * _short;         \/\/ 短整型指针$/;"	m	union:New_Arr::_newclass
+_strnewInit	mytool/C_MyLib/StrLib.c	/^void _strnewInit(strnew * newArray, int TypeSize) {$/;"	f
+_void	mytool/C_MyLib/StrLib.h	/^        void * _void;           \/\/ 无定义形指针$/;"	m	union:New_Arr::_newclass
+addEventListenersToElement	javaScript/MyToolBox/VideoTouchLib/videoTask.js	/^        function addEventListenersToElement (element) {$/;"	f
+addHex_FF_ToBuff	mytool/C_MyLib/UpData.c	/^void addHex_FF_ToBuff(void) {$/;"	f
+anyArrayToSameBaseNumber	mytool/C_MyLib/NumberBaseLib.c	/^uint64_t anyArrayToSameBaseNumber(int NumberBase, uint8_t * InputStr, int StrSize) {$/;"	f
+anyBaseArrayToAnyBaseNumber	mytool/C_MyLib/NumberBaseLib.c	/^int64_t anyBaseArrayToAnyBaseNumber(char IntArray[], int NumStrNowLen, int IntputBase, int OutputBase) {$/;"	f
+anyBaseNumberToAnyBaseArray	mytool/C_MyLib/NumberBaseLib.c	/^int anyBaseNumberToAnyBaseArray(uint64_t Number, int IntputBase, int OutputBase, char OutArray[], int ArrayMaxLen) {$/;"	f
+anyBaseNumberToSameArray	mytool/C_MyLib/NumberBaseLib.c	/^uint64_t anyBaseNumberToSameArray(uint8_t * Output, int StrSize, uint64_t InputNumber) {$/;"	f
+anyBaseToAnyBase	mytool/C_MyLib/NumberBaseLib.c	/^uint64_t anyBaseToAnyBase(uint64_t Number, int IntputBase, int OutputBase) {$/;"	f
+bRunning	mytool/main.c	/^BOOL   bRunning = TRUE;$/;"	v
+baudRate	mytool/main_.c	/^DWORD  baudRate      = CBR_9600;$/;"	v
+byteSize	mytool/main_.c	/^BYTE   byteSize      = 8;$/;"	v
+calculate_days	mytool/C_MyLib/StrLib.c	/^int calculate_days(int year, int month, int day) {$/;"	f
+catString	mytool/C_MyLib/StrLib.c	/^int catString(char * OutStr, const char * IntStr, int MaxSize, int IntSize) {$/;"	f
+char	windows_tool/gotoEditCode.cmd	/^    set char=!num:~0,1!$/;"	v
+check0	youtube/LowPower_AEC.cmd	/^:check0$/;"	l
+check1	youtube/LowPower_AEC.cmd	/^:check1$/;"	l
+checkDeltaForceClient_Start	youtube/LowPower_AEC.cmd	/^:checkDeltaForceClient_Start$/;"	l
+checkOfCsJsonStrIsRight	mytool/C_MyLib/JsonCheckFun.c	/^bool checkOfCsJsonStrIsRight(strnew JsonInputStr, strnew JsonOutputStr) {$/;"	f
+checkSum	mytool/C_MyLib/UpData.h	/^    uint8_t checkSum; \/\/ 校验和$/;"	m	struct:updata_param_s
+checkTimeFrom	mytool/C_MyLib/AT24CXXDataLoader.c	/^bool checkTimeFrom(FL_RTC_InitTypeDef InputTimeData) {$/;"	f
+check_Run	youtube/LowPower_AEC.cmd	/^:check_Run$/;"	l
+check_XTClock_isOk	mytool/C_MyLib/Check_XTHF_Or_XTLF.c	/^void check_XTClock_isOk(void) {$/;"	f
+clibs	mytool/C_MyLib/Makefile	/^clibs := $(wildcard *.c)$/;"	m
+click_class	javaScript/Lizhiming/Main.js	/^function click_class(button_Class) {$/;"	f
+clsInputSpace	mytool/main_.c	/^void   clsInputSpace(void) {$/;"	f
+copyString	mytool/C_MyLib/StrLib.c	/^bool copyString(char * OutStr, const char * IntStr, int MaxSize, int IntSize) {$/;"	f
+crc_tab16	mytool/C_MyLib/Check_CRC.c	/^static uint16_t crc_tab16[256] = {0};$/;"	v	file:
+data	mytool/C_MyLib/JsonDataAnalyzeLib.c	/^    char data[MAX_STACK_SIZE];$/;"	m	struct:__anon5	file:
+day	mytool/C_MyLib/AT24CXXDataLoader.h	/^    uint32_t day;$/;"	m	struct:__anon1
+day	mytool/C_MyLib/StrLib.h	/^    uint32_t day;       \/** 日 *\/$/;"	m	struct:_TimeStuClass
+div	javaScript/MyToolBox/VideoTouchLib/videoTask.js	/^        var div = null;$/;"	v
+doneAsciiStrToAnyBaseNumberData	mytool/C_MyLib/NumberBaseLib.c	/^int doneAsciiStrToAnyBaseNumberData(char AscArray[], int OutputBase) {$/;"	f
+doneAsciiToDouble	mytool/C_MyLib/NumberBaseLib.c	/^double doneAsciiToDouble(char AscArray[]) {$/;"	f
+doneBaseNumberDataToAsciiStr	mytool/C_MyLib/NumberBaseLib.c	/^int doneBaseNumberDataToAsciiStr(char AscArray[], int ArrayMaxLen, int NumberData, int IntputBase) {$/;"	f
+doneDoubleToAscii	mytool/C_MyLib/NumberBaseLib.c	/^void doneDoubleToAscii(char AscArray[], const char From[], double InputData) {$/;"	f
+doubleChStrToShortChStr	mytool/C_MyLib/NumberBaseLib.c	/^int doubleChStrToShortChStr(strnew inputArray, strnew OutputArray) {$/;"	f
+douyinVideoTask	javaScript/MyToolBox/douyinVideoTask/douyinTask.js	/^function douyinVideoTask () {$/;"	f
+flashCheckReadPageData	mytool/C_MyLib/UpData.c	/^static int flashCheckReadPageData(uint32_t addr, uint8_t * buf, int len) {$/;"	f	file:
+flash_read_page	mytool/C_MyLib/UpData.c	/^void flash_read_page(uint32_t addr, uint8_t * buf) {$/;"	f
+flash_write_page	mytool/C_MyLib/UpData.c	/^int flash_write_page(uint32_t addr, uint8_t * buf) {$/;"	f
+get	mytool/C_MyLib/JsonDataAnalyzeLib.h	/^    void (*get)(struct _JsonArray This, strnew OutStr, int ItemNum);    \/\/ 获取Json 某元素$/;"	m	struct:_JsonArray
+getArray	mytool/C_MyLib/JsonDataAnalyzeLib.h	/^    struct _JsonArray(*getArray)(struct _JsonObject This, char Key[], strnew OutStr);   \/\/ 获取Json array$/;"	m	struct:_JsonObject	typeref:struct:_JsonObject::getArray
+getArray	mytool/C_MyLib/JsonDataAnalyzeLib.h	/^    void (*getArray)(struct _JsonArray This, strnew OutStr, int ItemNum);    \/\/ 获取Json 某元素$/;"	m	struct:_JsonArray
+getBool	mytool/C_MyLib/JsonDataAnalyzeLib.h	/^    bool (*getBool)(struct _JsonObject This, char Key[]);                               \/\/ 获取Json bool$/;"	m	struct:_JsonObject
+getDouble	mytool/C_MyLib/JsonDataAnalyzeLib.h	/^    double (*getDouble)(struct _JsonObject This, char Key[]);                           \/\/ 获取Json double$/;"	m	struct:_JsonObject
+getDoubleChrOnString	mytool/C_MyLib/JsonDataAnalyzeLib.c	/^char * getDoubleChrOnString(char * MotherString, char HeadChr, char EndChr) {$/;"	f
+getFromTypeCheckDoubleOrFloat	mytool/C_MyLib/JsonSetLib.c	/^bool getFromTypeCheckDoubleOrFloat(strnew FromStr) {$/;"	f
+getInt	mytool/C_MyLib/JsonDataAnalyzeLib.h	/^    int (*getInt)(struct _JsonObject This, char Key[]);                                 \/\/ 获取Json int$/;"	m	struct:_JsonObject
+getKeyName	mytool/C_MyLib/JsonDataAnalyzeLib.c	71;"	d	file:
+getNowType	mytool/C_MyLib/JsonSetLib.c	/^char getNowType(const char * NowAddr, char * UserFromNow) {$/;"	f
+getObject	mytool/C_MyLib/JsonDataAnalyzeLib.h	/^    struct _JsonObject(*getObject)(struct _JsonObject This, char Key[], strnew OutStr); \/\/ 获取Json object$/;"	m	struct:_JsonObject	typeref:struct:_JsonObject::getObject
+getPartOfSetPointOnRing	mytool/C_MyLib/NumberBaseLib.c	/^float getPartOfSetPointOnRing(uint32_t SetPoint, uint32_t Min_Ring, uint32_t Max_Ring) {$/;"	f
+getString	mytool/C_MyLib/JsonDataAnalyzeLib.h	/^    void (*getString)(struct _JsonObject This, char Key[], strnew OutStr);              \/\/ 获取Json string$/;"	m	struct:_JsonObject
+getStrlen	mytool/C_MyLib/StrLib.h	/^    int (*getStrlen)(struct New_Arr This); \/\/ 获取类型$/;"	m	struct:New_Arr
+getTimeNumber_UTCByRTCTime	mytool/C_MyLib/StrLib.c	/^uint32_t getTimeNumber_UTCByRTCTime(strnew RTCTime_String) {$/;"	f
+get_CheckSum	mytool/C_MyLib/PublicLib_No_One.c	/^unsigned char get_CheckSum(unsigned char data[], int length) {$/;"	f
+get_crc_modbus	mytool/C_MyLib/Check_CRC.c	/^uint16_t get_crc_modbus(const unsigned char * input_str, size_t num_bytes) {$/;"	f
+get_timestamp	mytool/C_MyLib/StrLib.c	/^uint32_t get_timestamp($/;"	f
+hSerial	mytool/main.c	/^HANDLE hSerial;$/;"	v
+hSerial	mytool/main_.c	/^HANDLE hSerial;$/;"	v
+hour	mytool/C_MyLib/AT24CXXDataLoader.h	/^    uint32_t hour;$/;"	m	struct:__anon1
+hour	mytool/C_MyLib/StrLib.h	/^    uint32_t hour;      \/** 时 *\/$/;"	m	struct:_TimeStuClass
+hourTaskOfColorShowTask	mytool/C_MyLib/ColorShowTask.c	/^void hourTaskOfColorShowTask(void) {$/;"	f
+initStack	mytool/C_MyLib/JsonDataAnalyzeLib.c	/^void initStack(Stack * s) {$/;"	f
+initStr	mytool/main_.c	/^const char* initStr = initString_Txt;$/;"	v
+initString_Txt	mytool/main_.c	247;"	d	file:
+initTaskOfColorShowTask	mytool/C_MyLib/ColorShowTask.c	/^void initTaskOfColorShowTask(void) {$/;"	f
+init_crc16_tab	mytool/C_MyLib/Check_CRC.c	/^static void init_crc16_tab(void) {$/;"	f	file:
+integral	mytool/C_MyLib/PID_Mode.h	/^    double integral; \/\/ 积分项$/;"	m	struct:__anon9
+isEmpty	mytool/C_MyLib/JsonDataAnalyzeLib.c	/^int isEmpty(Stack * s) {$/;"	f
+isJsonNull	mytool/C_MyLib/JsonDataAnalyzeLib.h	/^    signed char (*isJsonNull)(struct _JsonArray This);                         \/\/ 判断Json 是否为空$/;"	m	struct:_JsonArray
+isJsonNull	mytool/C_MyLib/JsonDataAnalyzeLib.h	/^    signed char (*isJsonNull)(struct _JsonObject This, char Key[]);                     \/\/ 判断Json 是否为空$/;"	m	struct:_JsonObject
+isLeapYear	mytool/C_MyLib/StrLib.c	/^int isLeapYear(uint32_t year) {$/;"	f
+isOpenCS_JSon	mytool/main_.c	/^int    isOpenCS_JSon = 0;$/;"	v
+isSpecialCmd	mytool/main_.c	/^bool isSpecialCmd(char* CmdStr) {$/;"	f
+isTaskStart	mytool/C_MyLib/MIN_SetTime.h	/^        bool isTaskStart;       \/\/ 当前计时任务是否开启$/;"	m	struct:_USER_MIN_SET_TASK::__anon6
+isTaskStart	mytool/C_MyLib/MIN_SetTime.h	/^        bool isTaskStart;       \/\/ 当前计时任务是否开启$/;"	m	struct:_USER_Min_10_SET_TASK::__anon7
+isTaskStart	mytool/C_MyLib/MIN_SetTime.h	/^        bool isTaskStart;       \/\/ 当前计时任务是否开启$/;"	m	struct:_USER_Min_15_SET_TASK::__anon8
+isTaskStart	mytool/C_MyLib/RTC_SetTime.h	/^        bool isTaskStart;       \/\/ 当前计时任务是否开启$/;"	m	struct:_USER_SET_TASK::__anon10
+isTaskStart	mytool/C_MyLib/SetTime.h	/^        bool isTaskStart;       \/\/ 当前计时任务是否开启$/;"	m	struct:_BSTIM_USER_SET_TASK::__anon11
+isTaskStart	mytool/C_MyLib/SetTime.h	/^        bool isTaskStart;       \/\/ 当前计时任务是否开启$/;"	m	struct:_LPTIM_USER_SET_TASK::__anon12
+isUserPage	javaScript/MyToolBox/UrlDoingLib/UrlDoingLib.js	/^function isUserPage (UrlStr) {$/;"	f
+is_XTClock_Error	mytool/C_MyLib/Check_XTHF_Or_XTLF.h	/^    uint8_t is_XTClock_Error;$/;"	m	struct:_Check_XTHF_Or_XTLF
+is_crc_modbus	mytool/C_MyLib/Check_CRC.c	/^bool is_crc_modbus(strnew InputBuf) {$/;"	f
+main	mytool/main.c	/^int main() {$/;"	f
+main	mytool/main_.c	/^int main() {$/;"	f
+minTaskOfColorShowTask	mytool/C_MyLib/ColorShowTask.c	/^void minTaskOfColorShowTask(void) {$/;"	f
+minute	mytool/C_MyLib/AT24CXXDataLoader.h	/^    uint32_t minute;$/;"	m	struct:__anon1
+minute	mytool/C_MyLib/StrLib.h	/^    uint32_t minute;    \/** 分 *\/$/;"	m	struct:_TimeStuClass
+monitor_Run	youtube/LowPower_AEC.cmd	/^:monitor_Run$/;"	l
+month	mytool/C_MyLib/AT24CXXDataLoader.h	/^    uint32_t month;$/;"	m	struct:__anon1
+month	mytool/C_MyLib/StrLib.h	/^    uint32_t month;     \/** 月 *\/$/;"	m	struct:_TimeStuClass
+myGetS	mytool/main_.c	/^bool myGetS(strnew SpaceBuf) {$/;"	f
+myStrstr	mytool/C_MyLib/StrLib.c	/^char * myStrstr(char * MotherStr, char * SonStr, int MotherMaxSize) {$/;"	f
+myStrstrCont	mytool/C_MyLib/StrLib.c	/^char * myStrstrCont(char * MotherStr, char * SonStr, int MotherMaxSize, int ContNum) {$/;"	f
+newJsonArrayByString	mytool/C_MyLib/JsonDataAnalyzeLib.c	/^JsonArray newJsonArrayByString(strnew DataInit) {$/;"	f
+newJsonObjectByString	mytool/C_MyLib/JsonDataAnalyzeLib.c	/^JsonObject newJsonObjectByString(strnew DataInit) {$/;"	f
+newString	mytool/C_MyLib/StrLib.h	50;"	d
+newType	mytool/C_MyLib/StrLib.h	112;"	d
+newType1	mytool/C_MyLib/StrLib.h	108;"	d
+newType2	mytool/C_MyLib/StrLib.h	109;"	d
+newType_X	mytool/C_MyLib/StrLib.h	106;"	d
+newstrobj	mytool/C_MyLib/StrLib.h	44;"	d
+nulc	windows_tool/gotoEditCode.cmd	/^:nulc$/;"	l
+num	windows_tool/gotoEditCode.cmd	/^    set num=!num:~1!$/;"	v
+numberArrayToStrArray	mytool/C_MyLib/NumberBaseLib.c	/^void numberArrayToStrArray(char StrArray[], char NumberArray[], int ArrayMinLen) {$/;"	f
+objs	mytool/C_MyLib/Makefile	/^objs := $(clibs:%.c=%.o)$/;"	m
+openUserPage	javaScript/MyToolBox/OpenMyPage/OpenPage.js	/^function openUserPage () {$/;"	f
+pageNum	mytool/C_MyLib/UpData.h	/^    uint32_t pageNum; \/\/ 程序占用的 flash 页数$/;"	m	struct:updata_param_s
+parity	mytool/main_.c	/^BYTE   parity        = NOPARITY;$/;"	v
+peek	mytool/C_MyLib/JsonDataAnalyzeLib.c	/^char peek(Stack * s) {$/;"	f
+pid_compute	mytool/C_MyLib/PID_Mode.c	/^double pid_compute(PIDController *pid, double current_value, double dt) {$/;"	f
+pid_init	mytool/C_MyLib/PID_Mode.c	/^void pid_init(PIDController *pid, double Kp, double Ki, double Kd, double setpoint) {$/;"	f
+pop	mytool/C_MyLib/JsonDataAnalyzeLib.c	/^char pop(Stack * s) {$/;"	f
+portName	mytool/main_.c	/^char   portName[10]  = "COM3";$/;"	v
+previous_error	mytool/C_MyLib/PID_Mode.h	/^    double previous_error; \/\/ 上一次的误差$/;"	m	struct:__anon9
+process	windows_tool/gotoEditCode.cmd	/^:process$/;"	l
+push	mytool/C_MyLib/JsonDataAnalyzeLib.c	/^void push(Stack * s, char ch) {$/;"	f
+readDataBit	mytool/C_MyLib/NumberBaseLib.c	/^bool readDataBit(uint64_t InputNumber, int8_t BitNumber) {$/;"	f
+readFlashDataToUpdataBuff	mytool/C_MyLib/UpData.c	/^void readFlashDataToUpdataBuff(uint8_t PageNum) {$/;"	f
+readNowHtml	javaScript/MyToolBox/ReadHtml/ReadHtml.js	/^function readNowHtml () {$/;"	f
+saveMeterDataMainDev	mytool/C_MyLib/ColorShowTask.c	/^void saveMeterDataMainDev(char InputData[], int InputDataLen) {$/;"	f
+second	mytool/C_MyLib/AT24CXXDataLoader.h	/^    uint32_t second;$/;"	m	struct:__anon1
+second	mytool/C_MyLib/StrLib.h	/^    uint32_t second;    \/** 秒 *\/$/;"	m	struct:_TimeStuClass
+sendDataByRS4852	mytool/C_MyLib/ColorShowTask.c	/^void sendDataByRS4852(char * SendCmd, int SendCmdLen) {$/;"	f
+setDataBit	mytool/C_MyLib/NumberBaseLib.c	/^uint64_t setDataBit(uint64_t InputNumber, int8_t BitNumber, bool Value) {$/;"	f
+setNetArgumentInit	mytool/C_MyLib/AT24CXXDataLoader.c	/^void setNetArgumentInit(void (*UserShowdownNowDev)(void)) {$/;"	f
+setpoint	mytool/C_MyLib/PID_Mode.h	/^    double setpoint; \/\/ 目标值$/;"	m	struct:__anon9
+shortChStrToDoubleChStr	mytool/C_MyLib/NumberBaseLib.c	/^int shortChStrToDoubleChStr(strnew inputArray, strnew OutputArray) {$/;"	f
+sign	mytool/C_MyLib/UpData.h	/^    uint32_t sign;    \/\/ 标志位$/;"	m	struct:updata_param_s
+sizeItemNum	mytool/C_MyLib/JsonDataAnalyzeLib.h	/^    int (*sizeItemNum)(struct _JsonArray This);                         \/\/ 获取Json 数组个数$/;"	m	struct:_JsonArray
+sizeStr	mytool/C_MyLib/JsonDataAnalyzeLib.h	/^    int (*sizeStr)(struct _JsonObject This);                                            \/\/ 获取Json 键值对的个数$/;"	m	struct:_JsonObject
+startAutoRefresh	javaScript/MyToolBox/UrlDoingLib/UrlDoingLib.js	/^function startAutoRefresh (intervalTimeS) {$/;"	f
+stopBits	mytool/main_.c	/^BYTE   stopBits      = ONESTOPBIT;$/;"	v
+strArrayToNumberArray	mytool/C_MyLib/NumberBaseLib.c	/^void strArrayToNumberArray(char NumberArray[], char StrArray[], int ArrayMinLen) {$/;"	f
+strnew	mytool/C_MyLib/StrLib.h	/^} strnew;$/;"	t	typeref:struct:New_Arr
+strnew_malloc	mytool/C_MyLib/StrLib.h	84;"	d
+swapChr	mytool/C_MyLib/StrLib.c	/^void swapChr(char * a, char * b) {$/;"	f
+swapLowHight_Of_Char	mytool/C_MyLib/StrLib.c	/^char swapLowHight_Of_Char(char InputCh) {$/;"	f
+swapStr	mytool/C_MyLib/StrLib.c	/^void swapStr(char * InputStr, int StrLen) {$/;"	f
+testConnectFor433	mytool/C_MyLib/MIN_SetTime.h	/^    testConnectFor433,$/;"	e	enum:_Min_15_TaskName
+top	mytool/C_MyLib/JsonDataAnalyzeLib.c	/^    int top;$/;"	m	struct:__anon5	file:
+type	mytool/C_MyLib/StrLib.h	/^    const char * type;$/;"	m	struct:_Type_T
+updataCheck	mytool/C_MyLib/UpData.c	/^int updataCheck(void) {$/;"	f
+updataCopyProgram	mytool/C_MyLib/UpData.c	/^int updataCopyProgram(void) {$/;"	f
+updataInit	mytool/C_MyLib/UpData.c	/^void updataInit(void) {$/;"	f
+updataReadSign	mytool/C_MyLib/UpData.c	/^void updataReadSign(void) {$/;"	f
+updataWriteSign	mytool/C_MyLib/UpData.c	/^void updataWriteSign(void) {$/;"	f
+updata_param	mytool/C_MyLib/UpData.c	/^updata_param_t updata_param;$/;"	v
+updata_param_s	mytool/C_MyLib/UpData.h	/^typedef struct updata_param_s {$/;"	s
+updata_param_t	mytool/C_MyLib/UpData.h	/^} updata_param_t;$/;"	t	typeref:struct:updata_param_s
+updateCountdown	javaScript/Lizhiming/Main.js	/^function updateCountdown() {$/;"	f
+var	mytool/C_MyLib/StrLib.h	/^    void * var;$/;"	m	struct:_Type_T
+week	mytool/C_MyLib/AT24CXXDataLoader.h	/^    uint32_t week;$/;"	m	struct:__anon1
+week	mytool/C_MyLib/StrLib.h	/^    uint32_t week;      \/** 周 *\/$/;"	m	struct:_TimeStuClass
+window.onload	javaScript/MyToolBox/autoTask.js	/^window.onload = function () {$/;"	f
+writeUpdataBuffDataToFlash	mytool/C_MyLib/UpData.c	/^void writeUpdataBuffDataToFlash(uint8_t PageNum) {$/;"	f
+xhr.onreadystatechange	javaScript/Lizhiming/Main.js	/^xhr.onreadystatechange = function () {$/;"	f
+year	mytool/C_MyLib/AT24CXXDataLoader.h	/^    uint32_t year;$/;"	m	struct:__anon1
+year	mytool/C_MyLib/StrLib.h	/^    uint32_t year;      \/** 年 *\/$/;"	m	struct:_TimeStuClass
