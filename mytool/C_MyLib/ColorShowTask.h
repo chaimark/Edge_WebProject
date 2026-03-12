@@ -7,10 +7,10 @@
 typedef struct _ColorDisPlayOfMainDev {
     bool IsStartHeat;
     struct _HourData {
-        double InWaterTemp;       // 进水温度
-        double OutWaterTemp;      // 回水温度
-        double SumEnergy;         // 累计耗能
-        double SumFlow;           // 累计耗流
+        double InWaterTemp;  // 进水温度
+        double OutWaterTemp; // 回水温度
+        double SumEnergy;    // 累计耗能
+        double SumFlow;      // 累计耗流
     } HourData;
     struct _MinData {
         double FlowSpeed; // 流速

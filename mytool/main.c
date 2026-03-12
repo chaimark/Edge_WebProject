@@ -20,8 +20,8 @@ BYTE   parity        = NOPARITY;
 int    isOpenCS_JSon = 0;
 char   portName[10]  = "COM3";
 void   clsInputSpace(void) {
-    char ch = 0;
-    while ((ch = getchar()) != '\n' && ch != EOF)
+      char ch = 0;
+      while ((ch = getchar()) != '\n' && ch != EOF)
         ;
 }
 // 线程函数：接收串口数据
@@ -262,61 +262,61 @@ void DisplayHelp(strnew CmdName, strnew CmdVar) {
 
 const char* initStr = initString_Txt;
 void        CMD_ChooseFun(strnew InputBuff, bool UserFlag) {
-    FILE* configFile = fopen("config.json", "r");
-    if (configFile == NULL) {
-        printf("Error: 无法打开配置文件 config.json\n");
-        FILE* configFileW = fopen("config.json", "w");
-        if (configFileW != NULL) {
-            fprintf(configFileW, "%s", initStr);
-            fclose(configFileW);
+           FILE* configFile = fopen("config.json", "r");
+           if (configFile == NULL) {
+               printf("Error: 无法打开配置文件 config.json\n");
+               FILE* configFileW = fopen("config.json", "w");
+               if (configFileW != NULL) {
+                   fprintf(configFileW, "%s", initStr);
+                   fclose(configFileW);
         } else {
-            printf("Error: 无法创建配置文件 config.json\n");
+                   printf("Error: 无法创建配置文件 config.json\n");
         }
-        system("timeout 2");
-        printf("config.json success\n");
-        return;
+               system("timeout 2");
+               printf("config.json success\n");
+               return;
     }
-    fseek(configFile, 0, SEEK_END);
-    long fileSize = ftell(configFile);
-    fseek(configFile, 0, SEEK_SET);
+           fseek(configFile, 0, SEEK_END);
+           long fileSize = ftell(configFile);
+           fseek(configFile, 0, SEEK_SET);
 
-    strnew_malloc(JsonConfig, fileSize + 20);
-    char   ch;
-    size_t index = 0;
-    while ((ch = fgetc(configFile)) != EOF) {
-        JsonConfig.Name._char[index++] = ch;
+           strnew_malloc(JsonConfig, fileSize + 20);
+           char   ch;
+           size_t index = 0;
+           while ((ch = fgetc(configFile)) != EOF) {
+               JsonConfig.Name._char[index++] = ch;
     }
-    fclose(configFile);
-    JsonObject JsonConfigObj = newJsonObjectByString(JsonConfig);
-    // 读取 cmd_num
-    if (JsonConfigObj.isJsonNull(&JsonConfigObj, "cmd_Name_Array") < 0) {
-        goto EndOver2;
+           fclose(configFile);
+           JsonObject JsonConfigObj = newJsonObjectByString(JsonConfig);
+           // 读取 cmd_num
+           if (JsonConfigObj.isJsonNull(&JsonConfigObj, "cmd_Name_Array") < 0) {
+               goto EndOver2;
     }
-    if (JsonConfigObj.isJsonNull(&JsonConfigObj, "cmd_Var_Array") < 0) {
-        goto EndOver2;
+           if (JsonConfigObj.isJsonNull(&JsonConfigObj, "cmd_Var_Array") < 0) {
+               goto EndOver2;
     }
-    strnew_malloc(ArrNameSpace, fileSize + 20);
-    strnew_malloc(ArrVarSpace, fileSize + 20);
-    JsonArray Cmd_Array_Name = JsonConfigObj.getArray(&JsonConfigObj, "cmd_Name_Array", ArrNameSpace);
-    JsonArray Cmd_Array_Var  = JsonConfigObj.getArray(&JsonConfigObj, "cmd_Var_Array", ArrVarSpace);
+           strnew_malloc(ArrNameSpace, fileSize + 20);
+           strnew_malloc(ArrVarSpace, fileSize + 20);
+           JsonArray Cmd_Array_Name = JsonConfigObj.getArray(&JsonConfigObj, "cmd_Name_Array", ArrNameSpace);
+           JsonArray Cmd_Array_Var  = JsonConfigObj.getArray(&JsonConfigObj, "cmd_Var_Array", ArrVarSpace);
 
-    int cmd_num = (Cmd_Array_Name.sizeItemNum(&Cmd_Array_Name) == Cmd_Array_Var.sizeItemNum(&Cmd_Array_Var)
+           int cmd_num = (Cmd_Array_Name.sizeItemNum(&Cmd_Array_Name) == Cmd_Array_Var.sizeItemNum(&Cmd_Array_Var)
                               ? Cmd_Array_Name.sizeItemNum(&Cmd_Array_Name)
                               : 0);
-    newString(TempCmd_Name, 2048);
-    newString(TempCmd_Var, 2048);
-    for (int i = 0; i < cmd_num; i++) {
-        memset(TempCmd_Name.Name._char, 0, TempCmd_Name.MaxLen);
-        memset(TempCmd_Var.Name._char, 0, TempCmd_Var.MaxLen);
-        Cmd_Array_Name.get(&Cmd_Array_Name, TempCmd_Name, i);
-        Cmd_Array_Var.get(&Cmd_Array_Var, TempCmd_Var, i);
-        if (UserFlag == true) {
-            DisplayHelp(TempCmd_Name, TempCmd_Var);
+           newString(TempCmd_Name, 2048);
+           newString(TempCmd_Var, 2048);
+           for (int i = 0; i < cmd_num; i++) {
+               memset(TempCmd_Name.Name._char, 0, TempCmd_Name.MaxLen);
+               memset(TempCmd_Var.Name._char, 0, TempCmd_Var.MaxLen);
+               Cmd_Array_Name.get(&Cmd_Array_Name, TempCmd_Name, i);
+               Cmd_Array_Var.get(&Cmd_Array_Var, TempCmd_Var, i);
+               if (UserFlag == true) {
+                   DisplayHelp(TempCmd_Name, TempCmd_Var);
         } else {
-            if (strcmp(InputBuff.Name._char, TempCmd_Name.Name._char) == 0) {
-                memset(InputBuff.Name._char, 0, InputBuff.MaxLen);
-                memcpy(InputBuff.Name._char, TempCmd_Var.Name._char, strlen(TempCmd_Var.Name._char));
-                goto EndOver1;
+                   if (strcmp(InputBuff.Name._char, TempCmd_Name.Name._char) == 0) {
+                       memset(InputBuff.Name._char, 0, InputBuff.MaxLen);
+                       memcpy(InputBuff.Name._char, TempCmd_Var.Name._char, strlen(TempCmd_Var.Name._char));
+                       goto EndOver1;
             }
         }
     }

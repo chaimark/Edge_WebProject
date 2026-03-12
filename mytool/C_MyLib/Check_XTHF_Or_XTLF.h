@@ -5,12 +5,12 @@
 
 // 0: 时钟正常 1: 低时钟异常 2: 高时钟异常
 #define XT_CLOCK_OK 0
-#define XTLF_FAIL   1
-#define XTHF_FAIL   2
+#define XTLF_FAIL 1
+#define XTHF_FAIL 2
 
-#include <stdint.h> 
-#include <stdbool.h>
 #include "StrLib.h"
+#include <stdbool.h>
+#include <stdint.h>
 
 // 类定义
 typedef struct _Check_XTHF_Or_XTLF {

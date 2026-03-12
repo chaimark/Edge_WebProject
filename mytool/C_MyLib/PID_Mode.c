@@ -1,17 +1,17 @@
 #include "PID_Mode.h"
 
 // PID 初始化函数
-void pid_init(PIDController *pid, double Kp, double Ki, double Kd, double setpoint) {
-    pid->Kp = Kp;
-    pid->Ki = Ki;
-    pid->Kd = Kd;
-    pid->setpoint = setpoint;
-    pid->integral = 0.0;
+void pid_init(PIDController* pid, double Kp, double Ki, double Kd, double setpoint) {
+    pid->Kp             = Kp;
+    pid->Ki             = Ki;
+    pid->Kd             = Kd;
+    pid->setpoint       = setpoint;
+    pid->integral       = 0.0;
     pid->previous_error = 0.0;
 }
 
 // PID 计算函数
-double pid_compute(PIDController *pid, double current_value, double dt) {
+double pid_compute(PIDController* pid, double current_value, double dt) {
     // 计算误差
     double error = pid->setpoint - current_value;
 
@@ -29,4 +29,3 @@ double pid_compute(PIDController *pid, double current_value, double dt) {
 
     return output;
 }
-
