@@ -8,7 +8,8 @@ window.onload = function () {
         // Bilibili_Video_Pro();   // bilibili 脚本视频
         // Mmkv_Video_Pro();       // mmkv 脚本视频
         // TwoRK_Video_Pro();      // 2rk视频
-        TimePay_wait();
+        TimePay_wait();            // 自动抢票软件
+        AutoTouch_wait();
     }, 500);
 }
 

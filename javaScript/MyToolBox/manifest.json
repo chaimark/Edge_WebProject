@@ -34,6 +34,7 @@
     "content_scripts": [
         {
             "js": [
+                "./AutoTouchButton/TouchLib.js",
                 "./UrlDoingLib/UrlDoingLib.js",
                 "./autoPayLib/TimeAutoPay.js",
                 "./RefreshCTWing/RefreshCTwingTask.js",
