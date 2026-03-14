@@ -104,13 +104,6 @@ class _autoTouchClass {
             callback(null);
         };
 
-        // 回车键确认
-        input.onkeypress = (e) => {
-            if (e.key === 'Enter') {
-                okBtn.click();
-            }
-        };
-
         // 聚焦输入框
         input.focus();
         input.select();
